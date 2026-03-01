@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0D1F3C"/>
+      <stop offset="100%" style="stop-color:#112240"/>
+    </linearGradient>
+    <linearGradient id="pathGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#5B9BF8"/>
+      <stop offset="100%" style="stop-color:#6DD9A8"/>
+    </linearGradient>
+    <linearGradient id="glowGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#5B9BF8;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#6DD9A8;stop-opacity:0.15"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="softglow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <clipPath id="roundedClip">
+      <rect width="400" height="400" rx="88"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="400" rx="88" fill="url(#bgGrad)"/>
+
+  <!-- Subtle inner glow background -->
+  <rect width="400" height="400" rx="88" fill="url(#glowGrad)"/>
+
+  <!-- Very subtle grid dots for depth -->
+  <g opacity="0.06" fill="#7BB8F5">
+    <circle cx="80" cy="80" r="2.5"/><circle cx="160" cy="80" r="2.5"/><circle cx="240" cy="80" r="2.5"/><circle cx="320" cy="80" r="2.5"/>
+    <circle cx="80" cy="160" r="2.5"/><circle cx="160" cy="160" r="2.5"/><circle cx="240" cy="160" r="2.5"/><circle cx="320" cy="160" r="2.5"/>
+    <circle cx="80" cy="240" r="2.5"/><circle cx="160" cy="240" r="2.5"/><circle cx="240" cy="240" r="2.5"/><circle cx="320" cy="240" r="2.5"/>
+    <circle cx="80" cy="320" r="2.5"/><circle cx="160" cy="320" r="2.5"/><circle cx="240" cy="320" r="2.5"/><circle cx="320" cy="320" r="2.5"/>
+  </g>
+
+  <!-- MAIN ICON: tangled/complex path on left resolving into clean lines on right -->
+
+  <!-- Glow layer for the path (rendered behind) -->
+  <g filter="url(#softglow)" opacity="0.5">
+    <!-- Complex winding section -->
+    <path d="M 95 290 C 95 290 78 255 90 228 C 102 200 130 205 132 178 C 134 152 112 138 118 112 C 124 86 148 78 165 78"
+          stroke="url(#pathGrad)" stroke-width="10" fill="none" stroke-linecap="round"/>
+    <!-- Transition to clean -->
+    <path d="M 165 78 C 195 78 200 78 235 78"
+          stroke="url(#pathGrad)" stroke-width="10" fill="none" stroke-linecap="round"/>
+    <!-- Clean horizontal lines (resolved state) -->
+    <line x1="235" y1="78" x2="318" y2="78" stroke="url(#pathGrad)" stroke-width="10" stroke-linecap="round"/>
+    <line x1="235" y1="116" x2="318" y2="116" stroke="url(#pathGrad)" stroke-width="10" stroke-linecap="round"/>
+    <line x1="235" y1="154" x2="295" y2="154" stroke="url(#pathGrad)" stroke-width="10" stroke-linecap="round"/>
+  </g>
+
+  <!-- Complex winding section (main render) -->
+  <path d="M 95 290 C 95 290 78 255 90 228 C 102 200 130 205 132 178 C 134 152 112 138 118 112 C 124 86 148 78 165 78"
+        stroke="url(#pathGrad)" stroke-width="9" fill="none" stroke-linecap="round"
+        filter="url(#glow)" opacity="0.7"/>
+
+  <!-- Transition curve -->
+  <path d="M 165 78 C 195 78 200 78 235 78"
+        stroke="url(#pathGrad)" stroke-width="9" fill="none" stroke-linecap="round"
+        filter="url(#glow)"/>
+
+  <!-- Clean resolved lines (right side) — full opacity, crisp -->
+  <line x1="235" y1="78" x2="318" y2="78" stroke="url(#pathGrad)" stroke-width="9" stroke-linecap="round" filter="url(#glow)"/>
+  <line x1="235" y1="116" x2="318" y2="116" stroke="url(#pathGrad)" stroke-width="9" stroke-linecap="round" filter="url(#glow)"/>
+  <line x1="235" y1="154" x2="295" y2="154" stroke="url(#pathGrad)" stroke-width="9" stroke-linecap="round" filter="url(#glow)"/>
+
+  <!-- Vertical connector between the three clean lines -->
+  <line x1="235" y1="78" x2="235" y2="154" stroke="url(#pathGrad)" stroke-width="9" stroke-linecap="round" filter="url(#glow)" opacity="0.5"/>
+
+  <!-- Person/user dot at path origin -->
+  <circle cx="95" cy="290" r="14" fill="url(#pathGrad)" filter="url(#glow)" opacity="0.9"/>
+  <circle cx="95" cy="290" r="8" fill="#0D1F3C"/>
+
+  <!-- Small arrow at end of top clean line -->
+  <polyline points="305,62 322,78 305,94"
+            stroke="url(#pathGrad)" stroke-width="9" fill="none"
+            stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+
+  <!-- Divider line between complex and clean halves — very subtle -->
+  <line x1="218" y1="55" x2="218" y2="340" stroke="url(#pathGrad)" stroke-width="1.5" stroke-dasharray="6 8" opacity="0.12"/>
+
+  <!-- Bottom text lines — represent readable text content -->
+  <rect x="82" y="322" width="90" height="8" rx="4" fill="url(#pathGrad)" opacity="0.18"/>
+  <rect x="82" y="340" width="116" height="8" rx="4" fill="url(#pathGrad)" opacity="0.12"/>
+</svg>
