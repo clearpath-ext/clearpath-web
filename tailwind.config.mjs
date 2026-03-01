@@ -28,9 +28,9 @@ export default {
         'hero-gradient':  'radial-gradient(ellipse 80% 60% at 50% -10%, rgba(91,155,248,0.18) 0%, transparent 70%)',
       },
       animation: {
-        'fade-up':   'fadeUp 0.6s ease forwards',
-        'fade-in':   'fadeIn 0.5s ease forwards',
-        'glow-pulse':'glowPulse 3s ease-in-out infinite',
+        'fade-up':    'fadeUp 0.6s ease forwards',
+        'fade-in':    'fadeIn 0.5s ease forwards',
+        'glow-pulse': 'glowPulse 3s ease-in-out infinite',
       },
       keyframes: {
         fadeUp: {
@@ -48,5 +48,7 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 };
