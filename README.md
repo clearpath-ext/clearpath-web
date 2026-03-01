@@ -2,7 +2,16 @@
 
 The ClearPath project website, deployed at [clearpathext.com](https://clearpathext.com).
 
-Built with Astro + Tailwind CSS, deployed on Vercel.
+Built with Astro + Tailwind CSS, deployed on Cloudflare Pages.
+
+---
+
+## Stack
+
+- **Hosting:** Cloudflare Pages
+- **Framework:** Astro 4 (hybrid — static + serverless API routes)
+- **Styling:** Tailwind CSS
+- **Email:** Resend (inbound forwarding + sending)
 
 ---
 
@@ -15,22 +24,38 @@ pnpm dev     # http://localhost:4321
 
 ---
 
-## Deployment (Vercel)
+## Deployment (Cloudflare Pages)
 
-The site deploys automatically on every push to `main` via Vercel's GitHub integration.
+The site auto-deploys on every push to `main` via Cloudflare Pages GitHub integration.
 
 ### First-time setup
 
-1. Import the repo at [vercel.com/new](https://vercel.com/new)
-2. Framework preset: **Astro**
-3. Add environment variables (see below)
-4. Deploy
+1. Go to Cloudflare Dashboard → Pages → Create a project → Connect to Git
+2. Select `clearpath-ext/clearpath-web`
+3. Build settings:
+   - **Framework preset:** Astro
+   - **Build command:** `pnpm run build`
+   - **Output directory:** `dist`
+4. Add environment variables (see below)
+5. Deploy
+
+### Manual deploy
+
+```bash
+npx wrangler pages deploy dist --project-name clearpath-web
+```
 
 ---
 
 ## Environment Variables
 
-Set these in the Vercel dashboard under **Settings → Environment Variables**.
+Set in Cloudflare Pages dashboard under **Settings → Environment Variables**, or via CLI:
+
+```bash
+npx wrangler pages secret put RESEND_API_KEY
+npx wrangler pages secret put FORWARD_TO_EMAIL
+npx wrangler pages secret put INBOUND_WEBHOOK_SECRET
+```
 
 | Variable | Description |
 |---|---|
@@ -42,62 +67,30 @@ Copy `.env.example` to `.env` for local development.
 
 ---
 
-## Email Setup (Full Walkthrough)
+## Email Setup (hello@clearpathext.com)
 
 ClearPath uses Resend for both sending and receiving email at `hello@clearpathext.com`.
-
-### Step 1 — Add your domain to Resend
-
-1. Log into [resend.com](https://resend.com) → **Domains → Add Domain**
-2. Enter `clearpathext.com`
-3. Resend will give you DNS records to add (SPF, DKIM, DMARC)
-4. Add each record to your DNS provider
-5. Click **Verify** in Resend — takes a few minutes
-
-### Step 2 — Set up inbound routing in Resend
-
-1. In Resend dashboard → **Inbound → Add Route**
-2. **Receive at:** `hello@clearpathext.com`
-3. **Webhook URL:** `https://clearpathext.com/api/inbound-email`
-4. **Webhook secret:** generate a random string (e.g. `openssl rand -base64 32`) and paste it here
-
-### Step 3 — Set environment variables
-
-In Vercel dashboard:
-- `RESEND_API_KEY` → your key from Resend dashboard
-- `FORWARD_TO_EMAIL` → your personal Gmail (e.g. `you@gmail.com`)
-- `INBOUND_WEBHOOK_SECRET` → the same secret you set in Resend's webhook config
-
-### Step 4 — Test it
-
-Send a test email to `hello@clearpathext.com`. Within a few seconds it should arrive in your personal inbox, with the Reply-To set to the original sender so you can reply directly.
-
-### How it works
 
 ```
 Someone emails hello@clearpathext.com
         ↓
-Resend catches it (via MX records on your domain)
+Resend catches it (MX records on clearpathext.com)
         ↓
-Resend POSTs the email as JSON to /api/inbound-email
+Resend POSTs to https://clearpathext.com/api/inbound-email
         ↓
-The API route verifies the webhook secret
+API route verifies webhook secret
         ↓
-The API route calls Resend's send API to forward it to FORWARD_TO_EMAIL
+Forwards to FORWARD_TO_EMAIL via Resend, Reply-To set to original sender
         ↓
-Email arrives in your personal inbox with Reply-To set to the original sender
+Reply directly from your inbox — sender receives it as hello@clearpathext.com
 ```
 
-### Replying from hello@clearpathext.com
+### Setup steps
 
-To reply as `hello@clearpathext.com` from Gmail:
-
-1. Gmail → **Settings → See all settings → Accounts → Send mail as → Add another email**
-2. Enter `hello@clearpathext.com`
-3. SMTP server: `smtp.resend.com`, Port: `587`
-4. Username: `resend`
-5. Password: your Resend API key
-6. Gmail will send a verification code — check your inbound route is working and confirm it
+1. Add `clearpathext.com` to Resend → copy the DNS records into Cloudflare DNS
+2. In Resend → Inbound → add route: `hello@clearpathext.com` → `https://clearpathext.com/api/inbound-email`
+3. Set the three environment variables above
+4. Send a test email to `hello@clearpathext.com`
 
 ---
 
@@ -106,17 +99,13 @@ To reply as `hello@clearpathext.com` from Gmail:
 ```
 src/
 ├── pages/
-│   ├── index.astro              # Homepage
-│   ├── features.astro           # Feature overview
-│   ├── install.astro            # Installation guide
-│   ├── privacy.astro            # Privacy policy
+│   ├── index.astro           # Homepage
+│   ├── install.astro         # Install page
+│   ├── privacy.astro         # Privacy policy
 │   ├── api/
-│   │   └── inbound-email.ts     # Resend inbound webhook
+│   │   └── inbound-email.ts  # Resend inbound webhook
 │   └── docs/
-│       ├── getting-started.astro
-│       ├── api-setup.astro
-│       ├── profiles.astro
-│       └── symbols.astro
+│       └── getting-started.astro
 ├── components/
 │   ├── Nav.astro
 │   └── Footer.astro

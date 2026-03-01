@@ -1,0 +1,9 @@
+name = "clearpath-web"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+# Set secrets via: npx wrangler pages secret put <NAME>
+# RESEND_API_KEY
+# FORWARD_TO_EMAIL
+# INBOUND_WEBHOOK_SECRET
