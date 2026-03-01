@@ -1,0 +1,133 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const sections = [
+  { id: 'installation',  label: 'Installation' },
+  { id: 'first-use',     label: 'First Use' },
+  { id: 'read-aloud',    label: 'Read Aloud' },
+  { id: 'reading-mode',  label: 'Reading Mode' },
+  { id: 'simplify',      label: 'Simplify' },
+  { id: 'profiles',      label: 'Profiles' },
+];
+---
+
+<Base title="Getting Started" description="Get up and running with ClearPath in under 5 minutes.">
+  <Nav />
+
+  <main id="main-content" class="pt-32 pb-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-12">
+
+        <!-- Sidebar TOC -->
+        <aside class="hidden lg:block" aria-label="Documentation navigation">
+          <div class="sticky top-24 space-y-1">
+            <p class="text-xs font-semibold text-white/30 uppercase tracking-widest mb-4">On this page</p>
+            {sections.map(({ id, label }) => (
+              <a
+                href={`#${id}`}
+                class="block text-sm text-white/50 hover:text-white py-1.5 transition-colors border-l-2 border-transparent hover:border-brand-blue pl-3"
+              >
+                {label}
+              </a>
+            ))}
+            <div class="pt-6 border-t border-white/5 mt-6">
+              <a href="/docs/api-setup" class="block text-sm text-brand-blue hover:text-brand-green transition-colors py-1.5">
+                API Setup →
+              </a>
+              <a href="/docs/profiles" class="block text-sm text-white/50 hover:text-white transition-colors py-1.5">
+                Profiles →
+              </a>
+              <a href="/docs/symbols" class="block text-sm text-white/50 hover:text-white transition-colors py-1.5">
+                Symbol Overlay →
+              </a>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Content -->
+        <article class="prose-clearpath min-w-0">
+          <h1 class="font-display text-5xl text-white mb-2">Getting Started</h1>
+          <p class="text-white/40 text-lg mb-12">Up and running in under 5 minutes.</p>
+
+          <section id="installation" class="mb-14 scroll-mt-24">
+            <h2 class="font-display text-3xl text-white mb-4">Installation</h2>
+            <p class="text-white/60 mb-4">ClearPath is available for Chrome and Firefox. Install it directly from the browser store — no account required.</p>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a href="https://chromewebstore.google.com/detail/clearpath" target="_blank" rel="noopener noreferrer"
+                 class="px-5 py-3 rounded-lg font-medium text-navy-900 bg-brand-gradient hover:opacity-90 transition-opacity text-sm text-center">
+                Add to Chrome
+              </a>
+              <a href="https://addons.mozilla.org/firefox/addon/clearpath" target="_blank" rel="noopener noreferrer"
+                 class="px-5 py-3 rounded-lg font-medium text-white border border-white/10 hover:border-white/20 transition-all text-sm text-center">
+                Add to Firefox
+              </a>
+            </div>
+            <p class="text-white/40 text-sm mt-4">Chrome users: also works on Edge, Brave, Arc, and Opera.</p>
+          </section>
+
+          <section id="first-use" class="mb-14 scroll-mt-24">
+            <h2 class="font-display text-3xl text-white mb-4">First Use</h2>
+            <p class="text-white/60 mb-4">After installing, pin the extension to your toolbar by clicking the puzzle piece icon in Chrome and pinning ClearPath. This puts the icon in your toolbar for quick access.</p>
+            <p class="text-white/60">Click the ClearPath icon to open the control panel. From here you can toggle features on and off, adjust settings, and manage profiles.</p>
+          </section>
+
+          <section id="read-aloud" class="mb-14 scroll-mt-24">
+            <h2 class="font-display text-3xl text-white mb-4">Read Aloud</h2>
+            <p class="text-white/60 mb-4">Read Aloud works immediately after installation — no setup needed.</p>
+            <p class="text-white/60 mb-4"><strong class="text-white">To read selected text:</strong> highlight any text on a page, then right-click and choose "Read Aloud." The text will be spoken with each word highlighted as it's read.</p>
+            <p class="text-white/60 mb-4"><strong class="text-white">To read the full page:</strong> click the ClearPath icon in your toolbar and press the Read Page button.</p>
+            <p class="text-white/60"><strong class="text-white">Keyboard shortcut:</strong> <code class="text-brand-green bg-navy-800 px-1.5 py-0.5 rounded text-sm">Alt + R</code> to toggle reading.</p>
+            <div class="mt-6 p-4 rounded-xl bg-brand-blue/5 border border-brand-blue/20">
+              <p class="text-sm text-white/60"><strong class="text-white">Tip:</strong> Open the popup settings to configure voice, speed, and pitch. Your settings are saved automatically.</p>
+            </div>
+          </section>
+
+          <section id="reading-mode" class="mb-14 scroll-mt-24">
+            <h2 class="font-display text-3xl text-white mb-4">Reading Mode</h2>
+            <p class="text-white/60 mb-4">Reading Mode strips the current page down to its main content and applies your typography preferences.</p>
+            <p class="text-white/60 mb-4"><strong class="text-white">To activate:</strong> click the ClearPath icon and toggle Reading Mode, or press <code class="text-brand-green bg-navy-800 px-1.5 py-0.5 rounded text-sm">Alt + M</code>.</p>
+            <p class="text-white/60">In Reading Mode you can adjust font family (including OpenDyslexic), font size, line spacing, letter spacing, and choose from six colour themes. Your preferences are remembered per site.</p>
+          </section>
+
+          <section id="simplify" class="mb-14 scroll-mt-24">
+            <h2 class="font-display text-3xl text-white mb-4">Simplify</h2>
+            <p class="text-white/60 mb-4">Simplify rewrites selected text in plain English. It requires an LLM API key to use, but works without one using a basic rule-based fallback.</p>
+            <p class="text-white/60 mb-4"><strong class="text-white">To use:</strong> select any text, right-click, and choose "Simplify." A panel will appear with the rewritten text.</p>
+            <a href="/docs/api-setup" class="text-brand-blue hover:text-brand-green transition-colors text-sm font-medium">
+              Set up your API key →
+            </a>
+          </section>
+
+          <section id="profiles" class="mb-14 scroll-mt-24">
+            <h2 class="font-display text-3xl text-white mb-4">Profiles</h2>
+            <p class="text-white/60 mb-4">Profiles let you save a named set of accessibility settings and switch between them quickly. They're especially useful for SLPs and caregivers who configure ClearPath for someone else.</p>
+            <p class="text-white/60">Profiles can be exported as JSON and shared — hand a profile file to a caregiver and they can import it with one click.</p>
+            <a href="/docs/profiles" class="inline-block mt-3 text-brand-blue hover:text-brand-green transition-colors text-sm font-medium">
+              Full profiles guide →
+            </a>
+          </section>
+
+          <!-- Next steps -->
+          <div class="pt-8 border-t border-white/5">
+            <p class="text-white/40 text-sm mb-4">Next steps</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <a href="/docs/api-setup" class="p-4 rounded-xl bg-navy-800/40 border border-white/5 hover:border-white/10 transition-colors group">
+                <p class="font-medium text-white text-sm group-hover:text-brand-blue transition-colors">API Setup →</p>
+                <p class="text-white/40 text-xs mt-1">Set up Simplify with OpenAI, Anthropic, or Ollama</p>
+              </a>
+              <a href="/docs/symbols" class="p-4 rounded-xl bg-navy-800/40 border border-white/5 hover:border-white/10 transition-colors group">
+                <p class="font-medium text-white text-sm group-hover:text-brand-blue transition-colors">Symbol Overlay →</p>
+                <p class="text-white/40 text-xs mt-1">Enable AAC symbols on any webpage</p>
+              </a>
+            </div>
+          </div>
+
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Base>

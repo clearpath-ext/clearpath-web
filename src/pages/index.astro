@@ -1,0 +1,235 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base title="The web, on your terms">
+  <Nav />
+
+  <main id="main-content">
+
+    <!-- ===================== HERO ===================== -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+
+      <!-- Background radial glow -->
+      <div class="absolute inset-0 bg-hero-gradient pointer-events-none" aria-hidden="true" />
+
+      <!-- Subtle grid -->
+      <div
+        class="absolute inset-0 opacity-[0.03]"
+        style="background-image: linear-gradient(rgba(91,155,248,1) 1px, transparent 1px), linear-gradient(90deg, rgba(91,155,248,1) 1px, transparent 1px); background-size: 48px 48px;"
+        aria-hidden="true"
+      />
+
+      <div class="relative max-w-5xl mx-auto px-6 py-32 text-center">
+
+        <!-- Eyebrow -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-blue/30 bg-brand-blue/5 text-brand-blue text-sm font-medium mb-8 animate-fade-in">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand-blue" aria-hidden="true" />
+          Free & open source · No account required
+        </div>
+
+        <!-- Headline -->
+        <h1 class="font-display text-5xl md:text-7xl text-white leading-[1.1] mb-6 animate-fade-up delay-100">
+          The web,<br />
+          <em class="gradient-text not-italic">on your terms.</em>
+        </h1>
+
+        <!-- Subhead -->
+        <p class="text-lg md:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed mb-10 animate-fade-up delay-200">
+          ClearPath is a browser extension that simplifies text, reads pages aloud with word highlighting,
+          and displays AAC symbols — so anyone can access any website.
+        </p>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up delay-300">
+          <a
+            href="/install"
+            class="px-8 py-4 rounded-xl font-semibold text-navy-900 bg-brand-gradient hover:opacity-90 transition-opacity text-base w-full sm:w-auto"
+          >
+            Install for Chrome — Free
+          </a>
+          <a
+            href="https://github.com/clearpath-ext/clearpath-extension"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-8 py-4 rounded-xl font-medium text-white/70 border border-white/10 hover:border-white/20 hover:text-white transition-all text-base w-full sm:w-auto gradient-border"
+          >
+            View on GitHub
+          </a>
+        </div>
+
+        <!-- Social proof -->
+        <p class="mt-8 text-sm text-white/30 animate-fade-up delay-400">
+          Also available for Firefox · No data collected · MIT License
+        </p>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-fade-in delay-500" aria-hidden="true">
+        <span class="text-xs text-white/20 tracking-widest uppercase">Scroll</span>
+        <div class="w-px h-12 bg-gradient-to-b from-white/20 to-transparent" />
+      </div>
+    </section>
+
+
+    <!-- ===================== PROBLEM / INSIGHT ===================== -->
+    <section class="max-w-4xl mx-auto px-6 py-24 text-center">
+      <p class="font-display text-3xl md:text-4xl text-white/90 leading-relaxed animate-fade-up">
+        The web was built for people who read dense text quickly. That's not everyone.
+      </p>
+      <p class="mt-6 text-white/50 text-lg max-w-2xl mx-auto animate-fade-up delay-100">
+        AAC users, people with dyslexia, cognitive disabilities, acquired brain injuries —
+        millions of people face a web that wasn't designed with them in mind.
+        ClearPath changes that, on any site, right now.
+      </p>
+    </section>
+
+
+    <!-- ===================== FEATURES ===================== -->
+    <section class="max-w-6xl mx-auto px-6 py-16" aria-labelledby="features-heading">
+      <div class="text-center mb-16">
+        <h2 id="features-heading" class="font-display text-4xl md:text-5xl text-white mb-4 animate-fade-up">
+          Everything you need.<br /><span class="gradient-text">Nothing you don't.</span>
+        </h2>
+        <p class="text-white/50 max-w-xl mx-auto animate-fade-up delay-100">
+          Six focused tools that work on any website, with no account or setup required.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+        {[
+          {
+            icon: '🔊',
+            title: 'Read Aloud',
+            desc: 'Text-to-speech with word-by-word highlighting, built into every page. Configure voice, speed, and pitch. Works offline.',
+            color: 'from-blue-500/10',
+          },
+          {
+            icon: '🧠',
+            title: 'Simplify',
+            desc: 'Right-click any text and rewrite it in plain English at Grade 3, 5, or 8 level. Powered by your choice of LLM — or works offline with rule-based simplification.',
+            color: 'from-green-500/10',
+          },
+          {
+            icon: '📖',
+            title: 'Reading Mode',
+            desc: 'Strip pages down to their content. Apply OpenDyslexic font, adjust spacing, choose from six colour themes. Saved per site.',
+            color: 'from-purple-500/10',
+          },
+          {
+            icon: '🖼️',
+            title: 'Symbol Overlay',
+            desc: 'Display AAC pictogram symbols above words using the open ARASAAC library. Built for AAC users and the people who support them.',
+            color: 'from-amber-500/10',
+          },
+          {
+            icon: '🎯',
+            title: 'Focus Tools',
+            desc: 'Reading ruler that follows your cursor. Paragraph focus mode. Word complexity highlighting with simpler alternatives on hover.',
+            color: 'from-pink-500/10',
+          },
+          {
+            icon: '👤',
+            title: 'Profiles',
+            desc: 'Save accessibility settings as named profiles and share them as JSON. Perfect for SLPs configuring settings for a client.',
+            color: 'from-cyan-500/10',
+          },
+        ].map(({ icon, title, desc, color }) => (
+          <div class:list={[
+            'relative p-6 rounded-2xl bg-gradient-to-br to-transparent border border-white/5',
+            'hover:border-white/10 transition-colors group animate-fade-up',
+            color,
+          ]}>
+            <div class="text-3xl mb-4" aria-hidden="true">{icon}</div>
+            <h3 class="font-semibold text-white text-lg mb-2">{title}</h3>
+            <p class="text-white/50 text-sm leading-relaxed">{desc}</p>
+          </div>
+        ))}
+
+      </div>
+
+      <div class="text-center mt-10">
+        <a href="/features" class="text-brand-blue hover:text-brand-green transition-colors text-sm font-medium">
+          See all features in detail →
+        </a>
+      </div>
+    </section>
+
+
+    <!-- ===================== WHO IT'S FOR ===================== -->
+    <section class="py-24 border-y border-white/5" aria-labelledby="who-heading">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 id="who-heading" class="font-display text-4xl text-white text-center mb-12 animate-fade-up">
+          Built for real people.
+        </h2>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {[
+            { group: 'AAC users', detail: 'Symbols + simplification on any website' },
+            { group: 'Dyslexia', detail: 'OpenDyslexic font, reading ruler, TTS' },
+            { group: 'Cognitive disabilities', detail: 'Plain language, reduced complexity' },
+            { group: 'SLPs & caregivers', detail: 'Shareable profiles for clients' },
+          ].map(({ group, detail }) => (
+            <div class="p-5 rounded-xl bg-navy-800/50 border border-white/5 animate-fade-up">
+              <p class="font-semibold text-white text-sm mb-1">{group}</p>
+              <p class="text-white/40 text-xs leading-relaxed">{detail}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===================== PRIVACY CALLOUT ===================== -->
+    <section class="max-w-3xl mx-auto px-6 py-24 text-center">
+      <div class="p-8 rounded-2xl bg-navy-800/30 border border-white/5 gradient-border animate-fade-up">
+        <div class="text-4xl mb-4" aria-hidden="true">🔒</div>
+        <h2 class="font-display text-3xl text-white mb-4">Your data goes nowhere.</h2>
+        <p class="text-white/50 leading-relaxed">
+          No analytics. No telemetry. No servers. All settings stay in your browser.
+          If you use LLM features, text goes directly from your browser to your API provider — never through us.
+          Everything is open source and auditable.
+        </p>
+        <a href="/privacy" class="inline-block mt-6 text-sm text-brand-blue hover:text-brand-green transition-colors">
+          Read the privacy policy →
+        </a>
+      </div>
+    </section>
+
+
+    <!-- ===================== OPEN SOURCE CTA ===================== -->
+    <section class="max-w-6xl mx-auto px-6 py-16 text-center">
+      <h2 class="font-display text-4xl text-white mb-4 animate-fade-up">
+        Community built.<br /><span class="gradient-text">Everyone welcome.</span>
+      </h2>
+      <p class="text-white/50 max-w-xl mx-auto mb-8 animate-fade-up delay-100">
+        ClearPath is built and maintained by volunteers. Developers, designers, SLPs, and
+        accessibility advocates all have a place here.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up delay-200">
+        <a
+          href="https://github.com/clearpath-ext/clearpath-extension/blob/main/CONTRIBUTING.md"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-6 py-3 rounded-xl font-medium text-white border border-white/10 hover:border-white/20 transition-all"
+        >
+          Contributing guide
+        </a>
+        <a
+          href="https://github.com/clearpath-ext/clearpath-extension/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-6 py-3 rounded-xl font-medium text-brand-blue hover:text-brand-green transition-colors"
+        >
+          Browse good first issues →
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Base>

@@ -1,0 +1,118 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base
+  title="Install"
+  description="Install ClearPath for Chrome or Firefox in seconds. Free, no account required."
+>
+  <Nav />
+
+  <main id="main-content" class="pt-32 pb-24">
+    <div class="max-w-3xl mx-auto px-6">
+
+      <div class="text-center mb-16">
+        <h1 class="font-display text-5xl text-white mb-4">Install ClearPath</h1>
+        <p class="text-white/50 text-lg">Free. No account. Works immediately.</p>
+      </div>
+
+      <!-- Browser options -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-16">
+
+        <!-- Chrome -->
+        <div class="p-8 rounded-2xl bg-navy-800/40 border border-white/5 hover:border-brand-blue/30 transition-colors group">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-2xl" aria-hidden="true">🌐</div>
+            <div>
+              <h2 class="font-semibold text-white text-lg">Chrome</h2>
+              <p class="text-white/40 text-sm">Also works on Edge, Brave, Arc, Opera</p>
+            </div>
+          </div>
+          <a
+            href="https://chromewebstore.google.com/detail/clearpath"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-semibold text-navy-900 bg-brand-gradient hover:opacity-90 transition-opacity"
+          >
+            Add to Chrome — Free
+          </a>
+        </div>
+
+        <!-- Firefox -->
+        <div class="p-8 rounded-2xl bg-navy-800/40 border border-white/5 hover:border-brand-green/30 transition-colors group">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-2xl" aria-hidden="true">🦊</div>
+            <div>
+              <h2 class="font-semibold text-white text-lg">Firefox</h2>
+              <p class="text-white/40 text-sm">Full feature parity with Chrome</p>
+            </div>
+          </div>
+          <a
+            href="https://addons.mozilla.org/firefox/addon/clearpath"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-medium text-white border border-white/10 hover:border-white/20 transition-all"
+          >
+            Add to Firefox — Free
+          </a>
+        </div>
+
+      </div>
+
+      <!-- After install steps -->
+      <div class="mb-16">
+        <h2 class="font-display text-2xl text-white mb-8">After installing</h2>
+        <ol class="space-y-6">
+          {[
+            {
+              step: '1',
+              title: 'Pin the extension',
+              body: 'Click the puzzle piece icon in Chrome\'s toolbar, find ClearPath, and click the pin icon. This puts the ClearPath icon in your toolbar for quick access.',
+            },
+            {
+              step: '2',
+              title: 'Try Read Aloud immediately',
+              body: 'Select any text on a webpage, right-click, and choose "Read Aloud." No setup needed — it works right away using your browser\'s built-in voice.',
+            },
+            {
+              step: '3',
+              title: 'Explore the popup',
+              body: 'Click the ClearPath icon in your toolbar to open the control panel. From here you can toggle Reading Mode, adjust your settings, and manage profiles.',
+            },
+            {
+              step: '4',
+              title: 'Set up Simplify (optional)',
+              body: 'To use the Simplify feature, you\'ll need an LLM API key. This is optional — all other features work without it.',
+            },
+          ].map(({ step, title, body }) => (
+            <li class="flex gap-5">
+              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-brand-gradient flex items-center justify-center text-navy-900 font-bold text-sm" aria-label={`Step ${step}`}>
+                {step}
+              </div>
+              <div>
+                <h3 class="font-semibold text-white mb-1">{title}</h3>
+                <p class="text-white/50 text-sm leading-relaxed">{body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <!-- API setup CTA -->
+      <div class="p-6 rounded-xl bg-brand-blue/5 border border-brand-blue/20">
+        <h3 class="font-semibold text-white mb-2">Want to use Simplify and Summarize?</h3>
+        <p class="text-white/50 text-sm mb-4">
+          These features use an LLM API to rewrite text in plain language. You bring your own API key — your text goes directly to your provider.
+        </p>
+        <a href="/docs/api-setup" class="text-brand-blue text-sm font-medium hover:text-brand-green transition-colors">
+          API setup guide →
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</Base>

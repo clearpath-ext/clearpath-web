@@ -1,0 +1,68 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base title="Privacy Policy" description="ClearPath collects nothing. No data, no tracking, no servers.">
+  <Nav />
+
+  <main id="main-content" class="pt-32 pb-24">
+    <div class="max-w-2xl mx-auto px-6">
+
+      <h1 class="font-display text-5xl text-white mb-4">Privacy Policy</h1>
+      <p class="text-white/40 text-sm mb-12">Written in plain English, because our users deserve clear communication.</p>
+
+      <div class="space-y-10 prose-clearpath">
+
+        <div class="p-6 rounded-2xl bg-brand-green/5 border border-brand-green/20">
+          <p class="text-white font-semibold text-lg">The short version: ClearPath collects absolutely nothing about you. It has no servers. Your data never leaves your browser.</p>
+        </div>
+
+        <section>
+          <h2 class="font-display text-2xl text-white mb-3">What data ClearPath collects</h2>
+          <p class="text-white/60 leading-relaxed"><strong class="text-white">None.</strong> ClearPath does not collect, store, transmit, or share any personal data, browsing history, usage data, or any other information about you or how you use the extension.</p>
+        </section>
+
+        <section>
+          <h2 class="font-display text-2xl text-white mb-3">What stays on your device</h2>
+          <p class="text-white/60 leading-relaxed">Your settings are saved using your browser's built-in <code class="text-brand-green bg-navy-800 px-1.5 py-0.5 rounded text-sm">storage.sync</code> API. This syncs your settings across your own devices via your browser account. ClearPath never sees or touches this data — it goes directly between your browser and your browser account.</p>
+        </section>
+
+        <section>
+          <h2 class="font-display text-2xl text-white mb-3">The Simplify feature</h2>
+          <p class="text-white/60 leading-relaxed mb-3">If you use Simplify or Summarize, selected text is sent to your chosen LLM provider (OpenAI, Anthropic, or a local Ollama instance):</p>
+          <ul class="space-y-2 text-white/60">
+            <li class="flex gap-2"><span class="text-brand-green mt-0.5" aria-hidden="true">→</span> Text goes <strong class="text-white">directly from your browser to the API provider</strong></li>
+            <li class="flex gap-2"><span class="text-brand-green mt-0.5" aria-hidden="true">→</span> It does <strong class="text-white">not</strong> pass through any ClearPath server — there is no ClearPath server</li>
+            <li class="flex gap-2"><span class="text-brand-green mt-0.5" aria-hidden="true">→</span> It is subject to <strong class="text-white">your API provider's privacy policy</strong></li>
+            <li class="flex gap-2"><span class="text-brand-green mt-0.5" aria-hidden="true">→</span> Using <strong class="text-white">Ollama (local mode)</strong> means text never leaves your device at all</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="font-display text-2xl text-white mb-3">Analytics & tracking</h2>
+          <p class="text-white/60 leading-relaxed">None. Zero. ClearPath contains no analytics code, no tracking pixels, no telemetry, no crash reporting that sends data anywhere.</p>
+        </section>
+
+        <section>
+          <h2 class="font-display text-2xl text-white mb-3">Open source</h2>
+          <p class="text-white/60 leading-relaxed">ClearPath is completely open source. Every line of code is publicly auditable at <a href="https://github.com/clearpath-ext/clearpath-extension" target="_blank" rel="noopener noreferrer" class="text-brand-blue hover:text-brand-green transition-colors">github.com/clearpath-ext/clearpath-extension</a>. You don't have to take our word for any of this.</p>
+        </section>
+
+        <section>
+          <h2 class="font-display text-2xl text-white mb-3">Changes to this policy</h2>
+          <p class="text-white/60 leading-relaxed">Any changes will be visible in the git history of this file and announced in the repository's release notes.</p>
+        </section>
+
+        <section>
+          <h2 class="font-display text-2xl text-white mb-3">Contact</h2>
+          <p class="text-white/60 leading-relaxed">Questions? Email <a href="mailto:hello@clearpathext.com" class="text-brand-blue hover:text-brand-green transition-colors">hello@clearpathext.com</a> or open an issue on GitHub.</p>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Base>
