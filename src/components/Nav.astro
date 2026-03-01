@@ -19,7 +19,7 @@ const current = Astro.url.pathname;
     </a>
 
     <!-- Links -->
-    <ul class="hidden md:flex items-center gap-8" role="list">
+    <ul class="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2" role="list">
       {links.map(({ href, label }) => (
         <li>
           <a

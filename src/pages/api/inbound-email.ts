@@ -1,57 +1,40 @@
 // src/pages/api/inbound-email.ts
 // Resend fires a POST to this endpoint when someone emails hello@clearpathext.com
 // This route forwards the email to your personal inbox via Resend's send API.
-//
-// SETUP CHECKLIST:
-// 1. In Resend dashboard → Domains → Add Domain → add clearpathext.com
-// 2. Add the DNS records Resend gives you to your DNS provider
-// 3. In Resend dashboard → Inbound → Add Route:
-//    - Match:   hello@clearpathext.com
-//    - Webhook: https://clearpathext.com/api/inbound-email
-// 4. Set environment variables (see below)
 
-export const prerender = false; // This must be a serverless function
+export const prerender = false;
 
 import type { APIRoute } from 'astro';
 import { Resend } from 'resend';
 
-// Required environment variables (set in Vercel dashboard or .env file):
-// RESEND_API_KEY       — your Resend API key
-// FORWARD_TO_EMAIL     — your personal email (e.g. you@gmail.com)
-// INBOUND_WEBHOOK_SECRET — a random secret string you set in Resend's webhook config
-
-const resend = new Resend(import.meta.env.RESEND_API_KEY);
-
-export const POST: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async ({ request, locals }) => {
   try {
-    // 1. Verify the request is genuinely from Resend
-    const secret = import.meta.env.INBOUND_WEBHOOK_SECRET;
+    const { env } = (locals as any).runtime;
+
+    const apiKey: string = env.RESEND_API_KEY;
+    const forwardTo: string = env.FORWARD_TO_EMAIL;
+    const secret: string = env.INBOUND_WEBHOOK_SECRET;
+
+    if (!apiKey || !forwardTo) {
+      return new Response('Server misconfigured', { status: 500 });
+    }
+
+    // Verify the request is genuinely from Resend
     if (secret) {
-      const signature = request.headers.get('svix-signature') ?? 
+      const signature = request.headers.get('svix-signature') ??
                         request.headers.get('webhook-secret') ?? '';
       if (!signature.includes(secret)) {
         return new Response('Unauthorized', { status: 401 });
       }
     }
 
-    // 2. Parse the inbound email payload from Resend
     const payload = await request.json() as ResendInboundPayload;
+    const { from, to, subject, text, html, headers } = payload;
 
-    const {
-      from,
-      to,
-      subject,
-      text,
-      html,
-      headers,
-    } = payload;
-
-    // 3. Build a clean forwarded subject
     const forwardedSubject = subject?.startsWith('Fwd:')
       ? subject
       : `Fwd: ${subject ?? '(no subject)'}`;
 
-    // 4. Build the forwarded email body
     const originalFrom = from ?? 'Unknown sender';
     const originalDate = headers?.['Date'] ?? new Date().toUTCString();
 
@@ -78,11 +61,11 @@ export const POST: APIRoute = async ({ request }) => {
         `
       : undefined;
 
-    // 5. Send the forwarded email
+    const resend = new Resend(apiKey);
     const { error } = await resend.emails.send({
       from: 'ClearPath Inbound <hello@clearpathext.com>',
-      to: [import.meta.env.FORWARD_TO_EMAIL],
-      reply_to: originalFrom,            // So you can reply directly to the sender
+      to: [forwardTo],
+      reply_to: originalFrom,
       subject: forwardedSubject,
       text: forwardedText,
       ...(forwardedHtml ? { html: forwardedHtml } : {}),
@@ -107,8 +90,6 @@ export const POST: APIRoute = async ({ request }) => {
   }
 };
 
-// TypeScript type for Resend's inbound email payload
-// Full schema: https://resend.com/docs/api-reference/inbound-email
 interface ResendInboundPayload {
   from: string;
   to: string | string[];
@@ -118,7 +99,7 @@ interface ResendInboundPayload {
   headers?: Record<string, string>;
   attachments?: Array<{
     filename: string;
-    content: string;      // base64
+    content: string;
     contentType: string;
   }>;
 }
