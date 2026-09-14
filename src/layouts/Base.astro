@@ -44,6 +44,39 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     <!-- Accessibility -->
     <meta name="theme-color" content="#0D1F3C" />
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "ClearPath",
+        "url": "https://clearpathext.com",
+        "logo": "https://clearpathext.com/clearpath-logo.png",
+        "email": "hello@clearpathext.com",
+        "sameAs": [
+          "https://github.com/clearpath-ext"
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "ClearPath",
+        "description": "A free, open-source browser extension that makes any website accessible — simplifies text, reads pages aloud with word highlighting, and overlays AAC symbols.",
+        "applicationCategory": "BrowserExtension",
+        "operatingSystem": "Chrome, Firefox",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "url": "https://clearpathext.com",
+        "license": "https://github.com/clearpath-ext/clearpath-extension/blob/main/LICENSE",
+        "isAccessibleForFree": true
+      }
+    </script>
   </head>
   <body>
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-brand-blue focus:text-navy-900 focus:rounded-lg focus:font-semibold">

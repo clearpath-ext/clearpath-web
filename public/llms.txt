@@ -1,0 +1,27 @@
+# ClearPath
+
+> Free, open-source browser extension that makes any website accessible — simplifies text, reads pages aloud with word highlighting, and overlays AAC symbols. No account required.
+
+ClearPath is built for AAC users, people with dyslexia, and anyone who needs web content on their own terms. It works on top of any existing website — no cooperation from the site owner required.
+
+## Key facts
+
+- Price: free, no account required, no data collected
+- Platforms: Chrome and Firefox (Manifest V3 browser extension)
+- License: open source, MIT
+- Privacy: designed to work offline where possible; simplification can optionally use an LLM of your choice, or a fully offline rule-based mode
+
+## Features
+
+- **Read Aloud** — text-to-speech with word-by-word highlighting, built into every page. Configurable voice, speed, pitch. Works offline.
+- **Simplify** — right-click any text and rewrite it in plain English at Grade 3, 5, or 8 reading level. Works with your choice of LLM, or fully offline with rule-based simplification.
+- **Reading Mode** — strips pages down to their content, applies OpenDyslexic font, adjustable spacing, six color themes. Preference saved per site.
+- **Symbol Overlay** — displays AAC pictogram symbols above words using the open ARASAAC library.
+- **Focus Tools** — a reading ruler that follows the cursor, paragraph focus mode, word-complexity highlighting with simpler alternatives on hover.
+
+## Links
+
+- Source code: https://github.com/clearpath-ext/clearpath-extension
+- Organization: https://github.com/clearpath-ext
+- Contact: hello@clearpathext.com
+- Install: https://clearpathext.com/install
