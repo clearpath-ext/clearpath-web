@@ -7,17 +7,19 @@ ClearPath is built for AAC users, people with dyslexia, and anyone who needs web
 ## Key facts
 
 - Price: free, no account required, no data collected
-- Platforms: Chrome and Firefox (Manifest V3 browser extension)
+- Platforms: Chrome now (Manifest V3 browser extension); Firefox support is planned, launching after Chrome
 - License: open source, MIT
-- Privacy: designed to work offline where possible; simplification can optionally use an LLM of your choice, or a fully offline rule-based mode
+- Privacy: Read Aloud, Reading Mode, Focus Tools, Symbol Overlay, and Vocabulary all work fully offline; Simplify requires your own LLM API key (OpenAI, Anthropic, or a local Ollama instance) — there is no offline fallback for that one feature
 
 ## Features
 
 - **Read Aloud** — text-to-speech with word-by-word highlighting, built into every page. Configurable voice, speed, pitch. Works offline.
-- **Simplify** — right-click any text and rewrite it in plain English at Grade 3, 5, or 8 reading level. Works with your choice of LLM, or fully offline with rule-based simplification.
-- **Reading Mode** — strips pages down to their content, applies OpenDyslexic font, adjustable spacing, six color themes. Preference saved per site.
+- **Simplify** — right-click any text and rewrite it in plain English at Grade 3, 5, or 8 reading level. Requires your own LLM API key (OpenAI, Anthropic, or local Ollama).
+- **Reading Mode** — strips pages down to their content, applies OpenDyslexic font, adjustable spacing and column width, four color themes (Light, Dark, Sepia, High Contrast).
+- **Focus Tools** — a reading ruler that follows the cursor, paragraph focus mode, word-complexity highlighting with simpler alternatives on hover or keyboard focus.
 - **Symbol Overlay** — displays AAC pictogram symbols above words using the open ARASAAC library.
-- **Focus Tools** — a reading ruler that follows the cursor, paragraph focus mode, word-complexity highlighting with simpler alternatives on hover.
+- **Profiles** — save named accessibility configurations and export/import them as JSON, useful for SLPs and caregivers configuring a device for someone else.
+- **Vocabulary** — double-click any word for an instant plain-English definition, powered by a bundled offline dictionary (21,000+ entries). No API key, no internet required.
 
 ## Links
 

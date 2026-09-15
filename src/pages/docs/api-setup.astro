@@ -33,8 +33,8 @@ import Footer from '../../components/Footer.astro';
           <p class="text-white/60 mb-6">ClearPath works with any provider that speaks the OpenAI-compatible API format, plus Anthropic directly.</p>
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {[
-              { name: 'OpenAI', detail: 'GPT-4o, GPT-4o mini', url: 'https://platform.openai.com/api-keys' },
-              { name: 'Anthropic', detail: 'Claude 3.5 Haiku, Sonnet', url: 'https://console.anthropic.com/' },
+              { name: 'OpenAI', detail: 'GPT-4o mini', url: 'https://platform.openai.com/api-keys' },
+              { name: 'Anthropic', detail: 'Claude Haiku 4.5', url: 'https://console.anthropic.com/' },
               { name: 'Ollama', detail: 'Local models, fully offline', url: 'https://ollama.com/' },
             ].map(({ name, detail, url }) => (
               <a
@@ -55,10 +55,10 @@ import Footer from '../../components/Footer.astro';
           <ol class="space-y-4">
             {[
               'Click the ClearPath icon in your browser toolbar to open the popup.',
-              'Go to Settings → Simplify.',
+              'Expand the "LLM Settings" section.',
               'Choose your provider from the dropdown.',
-              'Paste your API key into the field. It\'s stored locally in your browser — never sent anywhere except your chosen provider.',
-              'Click Save. You\'re ready to use Simplify.',
+              'Paste your API key into the field — it saves automatically and is stored locally in your browser, never sent anywhere except your chosen provider.',
+              'You\'re ready to use Simplify.',
             ].map((step, i) => (
               <li class="flex gap-4">
                 <span class="flex-shrink-0 w-6 h-6 rounded-full bg-brand-gradient flex items-center justify-center text-navy-900 font-bold text-xs">
@@ -82,7 +82,7 @@ import Footer from '../../components/Footer.astro';
           <p class="text-white/60 text-sm leading-relaxed mb-4">
             Ollama lets you run LLMs locally — your text never leaves your machine. Install Ollama, pull a model, and set the base URL in ClearPath's settings to <code class="text-brand-green bg-navy-800 px-1.5 py-0.5 rounded">http://localhost:11434</code>.
           </p>
-          <p class="text-white/40 text-sm">Recommended model: <code class="text-brand-green bg-navy-800 px-1.5 py-0.5 rounded">llama3.2:3b</code> — fast and accurate for plain-language rewriting.</p>
+          <p class="text-white/40 text-sm">Default model: <code class="text-brand-green bg-navy-800 px-1.5 py-0.5 rounded">llama3.2</code> — fast and accurate for plain-language rewriting. You can change this in ClearPath's LLM Settings.</p>
         </section>
 
       </div>

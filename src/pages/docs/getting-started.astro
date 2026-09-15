@@ -8,7 +8,9 @@ const sections = [
   { id: 'first-use',     label: 'First Use' },
   { id: 'read-aloud',    label: 'Read Aloud' },
   { id: 'reading-mode',  label: 'Reading Mode' },
+  { id: 'focus-tools',   label: 'Focus Tools' },
   { id: 'simplify',      label: 'Simplify' },
+  { id: 'vocabulary',    label: 'Vocabulary' },
   { id: 'profiles',      label: 'Profiles' },
 ];
 ---
@@ -42,6 +44,9 @@ const sections = [
               <a href="/docs/symbols" class="block text-sm text-white/50 hover:text-white transition-colors py-1.5">
                 Symbol Overlay →
               </a>
+              <a href="/docs/vocabulary" class="block text-sm text-white/50 hover:text-white transition-colors py-1.5">
+                Vocabulary →
+              </a>
             </div>
           </div>
         </aside>
@@ -53,15 +58,14 @@ const sections = [
 
           <section id="installation" class="mb-14 scroll-mt-24">
             <h2 class="font-display text-3xl text-white mb-4">Installation</h2>
-            <p class="text-white/60 mb-4">ClearPath is available for Chrome and Firefox. Install it directly from the browser store — no account required.</p>
+            <p class="text-white/60 mb-4">ClearPath is launching on Chrome first, with full Firefox support to follow. The store listings aren't live yet — until they are, you can build it from source in a couple of minutes.</p>
             <div class="flex flex-col sm:flex-row gap-3">
-              <a href="https://chromewebstore.google.com/detail/clearpath" target="_blank" rel="noopener noreferrer"
+              <a href="https://github.com/clearpath-ext/clearpath-extension#from-source" target="_blank" rel="noopener noreferrer"
                  class="px-5 py-3 rounded-lg font-medium text-navy-900 bg-brand-gradient hover:opacity-90 transition-opacity text-sm text-center">
-                Add to Chrome
+                Install from source (GitHub)
               </a>
-              <a href="https://addons.mozilla.org/firefox/addon/clearpath" target="_blank" rel="noopener noreferrer"
-                 class="px-5 py-3 rounded-lg font-medium text-white border border-white/10 hover:border-white/20 transition-all text-sm text-center">
-                Add to Firefox
+              <a href="/install" class="px-5 py-3 rounded-lg font-medium text-white border border-white/10 hover:border-white/20 transition-all text-sm text-center">
+                Install page →
               </a>
             </div>
             <p class="text-white/40 text-sm mt-4">Chrome users: also works on Edge, Brave, Arc, and Opera.</p>
@@ -70,15 +74,15 @@ const sections = [
           <section id="first-use" class="mb-14 scroll-mt-24">
             <h2 class="font-display text-3xl text-white mb-4">First Use</h2>
             <p class="text-white/60 mb-4">After installing, pin the extension to your toolbar by clicking the puzzle piece icon in Chrome and pinning ClearPath. This puts the icon in your toolbar for quick access.</p>
-            <p class="text-white/60">Click the ClearPath icon to open the control panel. From here you can toggle features on and off, adjust settings, and manage profiles.</p>
+            <p class="text-white/60 mb-4">Click the ClearPath icon to open the control panel. From here you can toggle features on and off, adjust settings, and manage profiles.</p>
+            <p class="text-white/40 text-sm">🗓 Keyboard shortcuts for these actions are on the roadmap — for now, everything is accessed through the popup or the right-click menu.</p>
           </section>
 
           <section id="read-aloud" class="mb-14 scroll-mt-24">
             <h2 class="font-display text-3xl text-white mb-4">Read Aloud</h2>
             <p class="text-white/60 mb-4">Read Aloud works immediately after installation — no setup needed.</p>
             <p class="text-white/60 mb-4"><strong class="text-white">To read selected text:</strong> highlight any text on a page, then right-click and choose "Read Aloud." The text will be spoken with each word highlighted as it's read.</p>
-            <p class="text-white/60 mb-4"><strong class="text-white">To read the full page:</strong> click the ClearPath icon in your toolbar and press the Read Page button.</p>
-            <p class="text-white/60"><strong class="text-white">Keyboard shortcut:</strong> <code class="text-brand-green bg-navy-800 px-1.5 py-0.5 rounded text-sm">Alt + R</code> to toggle reading.</p>
+            <p class="text-white/60"><strong class="text-white">To read the full page:</strong> click the ClearPath icon in your toolbar and press the Read Page button.</p>
             <div class="mt-6 p-4 rounded-xl bg-brand-blue/5 border border-brand-blue/20">
               <p class="text-sm text-white/60"><strong class="text-white">Tip:</strong> Open the popup settings to configure voice, speed, and pitch. Your settings are saved automatically.</p>
             </div>
@@ -87,16 +91,35 @@ const sections = [
           <section id="reading-mode" class="mb-14 scroll-mt-24">
             <h2 class="font-display text-3xl text-white mb-4">Reading Mode</h2>
             <p class="text-white/60 mb-4">Reading Mode strips the current page down to its main content and applies your typography preferences.</p>
-            <p class="text-white/60 mb-4"><strong class="text-white">To activate:</strong> click the ClearPath icon and toggle Reading Mode, or press <code class="text-brand-green bg-navy-800 px-1.5 py-0.5 rounded text-sm">Alt + M</code>.</p>
-            <p class="text-white/60">In Reading Mode you can adjust font family (including OpenDyslexic), font size, line spacing, letter spacing, and choose from six colour themes. Your preferences are remembered per site.</p>
+            <p class="text-white/60"><strong class="text-white">To activate:</strong> click the ClearPath icon and toggle Reading Mode. You can adjust font family (including OpenDyslexic), font size, line spacing, and column width, and choose from four colour themes — Light, Dark, Sepia, and High Contrast. These preferences are saved to your browser account and sync across your devices.</p>
+          </section>
+
+          <section id="focus-tools" class="mb-14 scroll-mt-24">
+            <h2 class="font-display text-3xl text-white mb-4">Focus Tools</h2>
+            <p class="text-white/60 mb-4">Three tools that help with concentration and reading flow, available anywhere Reading Mode is active:</p>
+            <ul class="space-y-2 text-white/60 mb-4">
+              <li class="flex gap-2"><span class="text-brand-blue mt-0.5" aria-hidden="true">→</span> <strong class="text-white">Reading ruler</strong> — a coloured band that follows your cursor to help you track lines</li>
+              <li class="flex gap-2"><span class="text-brand-blue mt-0.5" aria-hidden="true">→</span> <strong class="text-white">Paragraph focus</strong> — dims everything except the paragraph you're reading</li>
+              <li class="flex gap-2"><span class="text-brand-blue mt-0.5" aria-hidden="true">→</span> <strong class="text-white">Word complexity</strong> — underlines hard words with a simpler alternative shown on hover or keyboard focus</li>
+            </ul>
+            <p class="text-white/60">Toggle each one from the ClearPath popup.</p>
           </section>
 
           <section id="simplify" class="mb-14 scroll-mt-24">
             <h2 class="font-display text-3xl text-white mb-4">Simplify</h2>
-            <p class="text-white/60 mb-4">Simplify rewrites selected text in plain English. It requires an LLM API key to use, but works without one using a basic rule-based fallback.</p>
+            <p class="text-white/60 mb-4">Simplify rewrites selected text in plain English using an LLM. It requires your own API key — there's no offline fallback for this feature.</p>
             <p class="text-white/60 mb-4"><strong class="text-white">To use:</strong> select any text, right-click, and choose "Simplify." A panel will appear with the rewritten text.</p>
             <a href="/docs/api-setup" class="text-brand-blue hover:text-brand-green transition-colors text-sm font-medium">
               Set up your API key →
+            </a>
+          </section>
+
+          <section id="vocabulary" class="mb-14 scroll-mt-24">
+            <h2 class="font-display text-3xl text-white mb-4">Vocabulary</h2>
+            <p class="text-white/60 mb-4">Double-click any word to see an instant plain-English definition — no API key needed, and it works fully offline using a bundled dictionary of over 21,000 entries.</p>
+            <p class="text-white/60 mb-4"><strong class="text-white">To use:</strong> toggle Vocabulary on in the popup, then double-click any word on the page. Dismiss the definition with Escape or by clicking elsewhere.</p>
+            <a href="/docs/vocabulary" class="text-brand-blue hover:text-brand-green transition-colors text-sm font-medium">
+              Full vocabulary guide →
             </a>
           </section>
 
@@ -120,6 +143,14 @@ const sections = [
               <a href="/docs/symbols" class="p-4 rounded-xl bg-navy-800/40 border border-white/5 hover:border-white/10 transition-colors group">
                 <p class="font-medium text-white text-sm group-hover:text-brand-blue transition-colors">Symbol Overlay →</p>
                 <p class="text-white/40 text-xs mt-1">Enable AAC symbols on any webpage</p>
+              </a>
+              <a href="/docs/vocabulary" class="p-4 rounded-xl bg-navy-800/40 border border-white/5 hover:border-white/10 transition-colors group">
+                <p class="font-medium text-white text-sm group-hover:text-brand-blue transition-colors">Vocabulary →</p>
+                <p class="text-white/40 text-xs mt-1">Offline word definitions, no API key needed</p>
+              </a>
+              <a href="/docs/profiles" class="p-4 rounded-xl bg-navy-800/40 border border-white/5 hover:border-white/10 transition-colors group">
+                <p class="font-medium text-white text-sm group-hover:text-brand-blue transition-colors">Profiles →</p>
+                <p class="text-white/40 text-xs mt-1">Save and share accessibility settings</p>
               </a>
             </div>
           </div>

@@ -39,7 +39,7 @@ import Footer from '../../components/Footer.astro';
               'Click the ClearPath icon in your toolbar to open the popup.',
               'Toggle Symbol Overlay on.',
               'Symbols will appear above supported words on the current page immediately.',
-              'To turn it off, toggle it off in the popup, or press Alt + S.',
+              'To turn it off, toggle it off in the popup, or right-click and choose "Symbols."',
             ].map((step, i) => (
               <li class="flex gap-4">
                 <span class="flex-shrink-0 w-6 h-6 rounded-full bg-brand-gradient flex items-center justify-center text-navy-900 font-bold text-xs">
@@ -55,9 +55,9 @@ import Footer from '../../components/Footer.astro';
           <h2 class="font-display text-2xl text-white mb-4">Settings</h2>
           <div class="space-y-4">
             {[
-              { label: 'Symbol size', detail: 'Small, medium, or large — choose what works for the screen and the user.' },
+              { label: 'Symbol density', detail: 'Key words only (around 36 core AAC words) or all supported words (around 100) — choose what works for the reader.' },
               { label: 'Symbol set', detail: 'ARASAAC colour symbols (default). More sets may be added in future versions.' },
-              { label: 'Per-site memory', detail: 'ClearPath remembers whether Symbol Overlay was on or off for each site you visit.' },
+              { label: 'Saved to your account', detail: 'Your Symbol Overlay preference is saved with the rest of your ClearPath settings and syncs across your devices via your browser account.' },
             ].map(({ label, detail }) => (
               <div class="flex gap-4 p-4 rounded-xl bg-navy-800/40 border border-white/5">
                 <div>

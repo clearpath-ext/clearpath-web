@@ -62,7 +62,7 @@ import Footer from '../components/Footer.astro';
 
         <!-- Social proof -->
         <p class="mt-8 text-sm text-white/30 animate-fade-up delay-400">
-          Also available for Firefox · No data collected · MIT License
+          Firefox support planned · No data collected · MIT License
         </p>
       </div>
 
@@ -94,7 +94,7 @@ import Footer from '../components/Footer.astro';
           Everything you need.<br /><span class="gradient-text">Nothing you don't.</span>
         </h2>
         <p class="text-white/50 max-w-xl mx-auto animate-fade-up delay-100">
-          Six focused tools that work on any website, with no account or setup required.
+          Seven focused tools that work on any website, with no account or setup required.
         </p>
       </div>
 
@@ -110,13 +110,13 @@ import Footer from '../components/Footer.astro';
           {
             icon: '🧠',
             title: 'Simplify',
-            desc: 'Right-click any text and rewrite it in plain English at Grade 3, 5, or 8 level. Powered by your choice of LLM — or works offline with rule-based simplification.',
+            desc: 'Right-click any text and rewrite it in plain English at Grade 3, 5, or 8 level. Powered by your choice of LLM — OpenAI, Anthropic, or a fully local Ollama model. Requires your own API key.',
             color: 'from-green-500/10',
           },
           {
             icon: '📖',
             title: 'Reading Mode',
-            desc: 'Strip pages down to their content. Apply OpenDyslexic font, adjust spacing, choose from six colour themes. Saved per site.',
+            desc: 'Strip pages down to their content. Apply OpenDyslexic font, adjust spacing and column width, choose from four colour themes.',
             color: 'from-purple-500/10',
           },
           {
@@ -136,6 +136,12 @@ import Footer from '../components/Footer.astro';
             title: 'Profiles',
             desc: 'Save accessibility settings as named profiles and share them as JSON. Perfect for SLPs configuring settings for a client.',
             color: 'from-cyan-500/10',
+          },
+          {
+            icon: '📚',
+            title: 'Vocabulary',
+            desc: 'Double-click any word for an instant plain-English definition. Powered by a bundled offline dictionary — no API key, no internet required.',
+            color: 'from-rose-500/10',
           },
         ].map(({ icon, title, desc, color }) => (
           <div class:list={[
