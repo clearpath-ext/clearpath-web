@@ -87,6 +87,128 @@ import Footer from '../components/Footer.astro';
     </section>
 
 
+    <!-- ===================== DEMO ===================== -->
+    <section class="max-w-4xl mx-auto px-6 py-16" aria-labelledby="demo-heading">
+      <div class="text-center mb-10">
+        <h2 id="demo-heading" class="font-display text-3xl md:text-4xl text-white mb-3 animate-fade-up">
+          See it work.
+        </h2>
+        <p class="text-white/50 animate-fade-up delay-100">
+          A real example of the kind of text ClearPath rewrites — try the toggle.
+        </p>
+      </div>
+
+      <div class="rounded-2xl border border-white/5 bg-navy-800/30 overflow-hidden animate-fade-up delay-200">
+        <div class="flex items-center justify-center gap-1 p-3 border-b border-white/5" role="group" aria-label="Demo view">
+          <button
+            id="demo-before-btn"
+            type="button"
+            aria-pressed="true"
+            class="px-4 py-1.5 rounded-lg text-sm font-medium transition-colors bg-white/10 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
+          >
+            Before
+          </button>
+          <button
+            id="demo-after-btn"
+            type="button"
+            aria-pressed="false"
+            class="px-4 py-1.5 rounded-lg text-sm font-medium transition-colors text-white/50 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
+          >
+            With ClearPath
+          </button>
+        </div>
+
+        <div class="p-8 md:p-10 min-h-[220px] flex items-center">
+          <div id="demo-before-panel" class="w-full">
+            <p class="text-white/60 leading-relaxed">
+              Applicants must submit all requisite documentation prior to the commencement of the
+              eligibility determination process. Failure to comply with the aforementioned
+              requirements may result in the forfeiture of benefits.
+            </p>
+          </div>
+
+          <div id="demo-after-panel" class="w-full" hidden>
+            <div class="flex items-center gap-2 mb-5 text-brand-blue text-sm font-medium" aria-hidden="true">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-blue opacity-75" />
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-blue" />
+              </span>
+              Reading aloud
+            </div>
+            <p id="demo-words" class="text-white text-xl md:text-2xl leading-relaxed tracking-wide">
+              {[
+                'You', 'must', 'send', 'your', 'papers', 'before', 'we', 'check', 'if', 'you',
+                'qualify.', 'If', 'you', "don't", 'send', 'them,', 'you', 'may', 'lose', 'your', 'benefits.',
+              ].map((word) => (
+                <span class="demo-word rounded transition-colors duration-150">{word}{' '}</span>
+              ))}
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const beforeBtn = document.getElementById('demo-before-btn');
+      const afterBtn = document.getElementById('demo-after-btn');
+      const beforePanel = document.getElementById('demo-before-panel');
+      const afterPanel = document.getElementById('demo-after-panel');
+      const words = Array.from(document.querySelectorAll('#demo-words .demo-word'));
+
+      let highlightTimer: ReturnType<typeof setInterval> | null = null;
+      let wordIndex = 0;
+
+      function clearHighlight() {
+        words.forEach((w) => w.classList.remove('bg-brand-blue/30'));
+      }
+
+      function startHighlight() {
+        if (highlightTimer || words.length === 0) return;
+        wordIndex = 0;
+        highlightTimer = setInterval(() => {
+          clearHighlight();
+          words[wordIndex]?.classList.add('bg-brand-blue/30');
+          wordIndex = (wordIndex + 1) % words.length;
+        }, 320);
+      }
+
+      function stopHighlight() {
+        if (highlightTimer) {
+          clearInterval(highlightTimer);
+          highlightTimer = null;
+        }
+        clearHighlight();
+      }
+
+      function showAfter() {
+        beforePanel?.setAttribute('hidden', '');
+        afterPanel?.removeAttribute('hidden');
+        beforeBtn?.setAttribute('aria-pressed', 'false');
+        afterBtn?.setAttribute('aria-pressed', 'true');
+        beforeBtn?.classList.remove('bg-white/10', 'text-white');
+        beforeBtn?.classList.add('text-white/50');
+        afterBtn?.classList.add('bg-white/10', 'text-white');
+        afterBtn?.classList.remove('text-white/50');
+        startHighlight();
+      }
+
+      function showBefore() {
+        afterPanel?.setAttribute('hidden', '');
+        beforePanel?.removeAttribute('hidden');
+        afterBtn?.setAttribute('aria-pressed', 'false');
+        beforeBtn?.setAttribute('aria-pressed', 'true');
+        afterBtn?.classList.remove('bg-white/10', 'text-white');
+        afterBtn?.classList.add('text-white/50');
+        beforeBtn?.classList.add('bg-white/10', 'text-white');
+        beforeBtn?.classList.remove('text-white/50');
+        stopHighlight();
+      }
+
+      beforeBtn?.addEventListener('click', showBefore);
+      afterBtn?.addEventListener('click', showAfter);
+    </script>
+
+
     <!-- ===================== FEATURES ===================== -->
     <section class="max-w-6xl mx-auto px-6 py-16" aria-labelledby="features-heading">
       <div class="text-center mb-16">
@@ -202,6 +324,48 @@ import Footer from '../components/Footer.astro';
         <a href="/privacy" class="inline-block mt-6 text-sm text-brand-blue hover:text-brand-green transition-colors">
           Read the privacy policy →
         </a>
+      </div>
+    </section>
+
+
+    <!-- ===================== FAQ ===================== -->
+    <section class="max-w-3xl mx-auto px-6 py-16" aria-labelledby="faq-heading">
+      <h2 id="faq-heading" class="font-display text-4xl text-white text-center mb-12 animate-fade-up">
+        Questions, answered.
+      </h2>
+
+      <div class="space-y-4">
+        {[
+          {
+            q: 'Does ClearPath cost anything?',
+            a: "No. ClearPath is completely free and open source — no subscription, no ads, no account, no trial that expires.",
+          },
+          {
+            q: 'Will it slow down my browsing?',
+            a: "No. ClearPath's features only activate when you use them — reading a page aloud, opening Reading Mode, and so on. There's no background analysis or network activity until you ask for it.",
+          },
+          {
+            q: 'What data does ClearPath collect?',
+            a: 'None. No analytics, no telemetry, no tracking of any kind. Settings are stored locally in your browser and synced only via your own browser account.',
+          },
+          {
+            q: 'Do I need an account to use it?',
+            a: 'No account, ever — for ClearPath itself. Install it and everything except Simplify works immediately.',
+          },
+          {
+            q: 'Do I need an API key?',
+            a: "Only for Simplify, which rewrites text using an LLM you bring your own API key for (OpenAI, Anthropic, or a local Ollama model). Read Aloud, Reading Mode, Focus Tools, Symbol Overlay, and Vocabulary all work without one.",
+          },
+          {
+            q: 'Which browsers does it support?',
+            a: 'Chrome today (also works on Edge, Brave, Arc, and Opera). Firefox support is planned, launching after Chrome.',
+          },
+        ].map(({ q, a }) => (
+          <div class="p-5 rounded-xl bg-navy-800/40 border border-white/5 animate-fade-up">
+            <h3 class="font-semibold text-white text-sm mb-2">{q}</h3>
+            <p class="text-white/50 text-sm leading-relaxed">{a}</p>
+          </div>
+        ))}
       </div>
     </section>
 

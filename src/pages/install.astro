@@ -71,10 +71,81 @@ import Footer from '../components/Footer.astro';
 
       </div>
 
-      <p class="text-white/40 text-sm text-center -mt-8 mb-16">
-        ClearPath is launching on Chrome first, with full Firefox support to follow.
-        <a href="https://github.com/clearpath-ext/clearpath-extension" target="_blank" rel="noopener noreferrer" class="text-brand-blue hover:text-brand-green transition-colors">Watch the repo</a> for release updates.
-      </p>
+      <!-- Notify me -->
+      <div class="p-6 rounded-2xl bg-navy-800/40 border border-white/5 mb-16 -mt-8">
+        <h2 class="font-semibold text-white mb-1">Get notified at launch</h2>
+        <p class="text-white/50 text-sm mb-4">
+          ClearPath is launching on Chrome first, with full Firefox support to follow. Leave your email and we'll let you know the moment either store listing goes live — nothing else, ever.
+        </p>
+
+        <form id="notify-form" class="flex flex-col sm:flex-row gap-3" novalidate>
+          <label for="notify-email" class="sr-only">Email address</label>
+          <input
+            id="notify-email"
+            name="email"
+            type="email"
+            required
+            placeholder="you@example.com"
+            autocomplete="email"
+            class="flex-1 px-4 py-3 rounded-lg bg-navy-900 border border-white/10 text-white text-sm placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-brand-blue"
+          />
+          <!-- Honeypot — hidden from sighted and AT users, real visitors never fill it in -->
+          <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+          <button
+            type="submit"
+            class="px-6 py-3 rounded-lg font-semibold text-navy-900 bg-brand-gradient hover:opacity-90 transition-opacity text-sm whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 focus-visible:ring-offset-navy-800"
+          >
+            Notify me
+          </button>
+        </form>
+        <p id="notify-status" class="text-sm mt-3" role="status" aria-live="polite"></p>
+
+        <p class="text-white/30 text-xs mt-2">
+          Prefer not to share your email? <a href="https://github.com/clearpath-ext/clearpath-extension" target="_blank" rel="noopener noreferrer" class="text-brand-blue hover:text-brand-green transition-colors">Watch the repo on GitHub</a> instead.
+        </p>
+      </div>
+
+      <script>
+        const form = document.getElementById('notify-form') as HTMLFormElement | null;
+        const status = document.getElementById('notify-status');
+
+        form?.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          if (!status) return;
+
+          const formData = new FormData(form);
+          const email = String(formData.get('email') ?? '').trim();
+          const website = String(formData.get('website') ?? '');
+
+          const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+          if (submitBtn) submitBtn.disabled = true;
+          status.textContent = 'Sending…';
+          status.className = 'text-sm mt-3 text-white/50';
+
+          try {
+            const res = await fetch('/api/notify', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ email, website }),
+            });
+            const data = await res.json().catch(() => ({}));
+
+            if (res.ok) {
+              status.textContent = "You're on the list — we'll email you at launch.";
+              status.className = 'text-sm mt-3 text-brand-green';
+              form.reset();
+            } else {
+              status.textContent = data.error || 'Something went wrong — please try again.';
+              status.className = 'text-sm mt-3 text-red-400';
+            }
+          } catch {
+            status.textContent = 'Something went wrong — please try again.';
+            status.className = 'text-sm mt-3 text-red-400';
+          } finally {
+            if (submitBtn) submitBtn.disabled = false;
+          }
+        });
+      </script>
 
       <!-- After install steps -->
       <div class="mb-16">
