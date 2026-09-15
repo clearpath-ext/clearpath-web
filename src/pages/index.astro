@@ -153,31 +153,102 @@ import Footer from '../components/Footer.astro';
       const afterBtn = document.getElementById('demo-after-btn');
       const beforePanel = document.getElementById('demo-before-panel');
       const afterPanel = document.getElementById('demo-after-panel');
-      const words = Array.from(document.querySelectorAll('#demo-words .demo-word'));
+      const words = Array.from(
+        document.querySelectorAll<HTMLElement>('#demo-words .demo-word'),
+      );
 
-      let highlightTimer: ReturnType<typeof setInterval> | null = null;
+      const supportsSpeech = 'speechSynthesis' in window;
+      let fallbackTimer: ReturnType<typeof setInterval> | null = null;
+      let fallbackStartTimer: ReturnType<typeof setTimeout> | null = null;
       let wordIndex = 0;
 
       function clearHighlight() {
         words.forEach((w) => w.classList.remove('bg-brand-blue/30'));
       }
 
-      function startHighlight() {
-        if (highlightTimer || words.length === 0) return;
+      function highlightWord(i: number) {
+        clearHighlight();
+        words[i]?.classList.add('bg-brand-blue/30');
+      }
+
+      function stopFallback() {
+        if (fallbackTimer) {
+          clearInterval(fallbackTimer);
+          fallbackTimer = null;
+        }
+      }
+
+      // Timed sweep — used when speech synthesis is unavailable, or as a
+      // graceful fallback when a browser/voice doesn't fire word boundaries.
+      function startFallback() {
+        stopFallback();
         wordIndex = 0;
-        highlightTimer = setInterval(() => {
-          clearHighlight();
-          words[wordIndex]?.classList.add('bg-brand-blue/30');
+        fallbackTimer = setInterval(() => {
+          highlightWord(wordIndex);
           wordIndex = (wordIndex + 1) % words.length;
         }, 320);
       }
 
-      function stopHighlight() {
-        if (highlightTimer) {
-          clearInterval(highlightTimer);
-          highlightTimer = null;
+      function stopSpeech() {
+        if (fallbackStartTimer) {
+          clearTimeout(fallbackStartTimer);
+          fallbackStartTimer = null;
         }
+        stopFallback();
+        if (supportsSpeech) window.speechSynthesis.cancel();
         clearHighlight();
+      }
+
+      function playDemo() {
+        clearHighlight();
+        if (words.length === 0) return;
+
+        if (!supportsSpeech) {
+          startFallback();
+          return;
+        }
+
+        const text = words.map((w) => w.textContent?.trim() ?? '').join(' ');
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.rate = 0.95;
+
+        // Map each word span to its character offset in `text`, so a
+        // boundary event's charIndex can be matched back to a span.
+        let cursor = 0;
+        const starts = words.map((w) => {
+          const word = w.textContent?.trim() ?? '';
+          const idx = text.indexOf(word, cursor);
+          cursor = idx + word.length;
+          return idx;
+        });
+
+        let boundaryFired = false;
+        fallbackStartTimer = setTimeout(() => {
+          if (!boundaryFired) startFallback();
+        }, 600);
+
+        utterance.onboundary = (e) => {
+          if (e.name && e.name !== 'word') return;
+          boundaryFired = true;
+          stopFallback();
+          let idx = 0;
+          for (let i = 0; i < starts.length; i++) {
+            if (starts[i] <= e.charIndex) idx = i;
+            else break;
+          }
+          highlightWord(idx);
+        };
+
+        utterance.onend = () => {
+          stopFallback();
+          clearHighlight();
+        };
+        utterance.onerror = () => {
+          if (!boundaryFired) startFallback();
+        };
+
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(utterance);
       }
 
       function showAfter() {
@@ -189,7 +260,7 @@ import Footer from '../components/Footer.astro';
         beforeBtn?.classList.add('text-white/50');
         afterBtn?.classList.add('bg-white/10', 'text-white');
         afterBtn?.classList.remove('text-white/50');
-        startHighlight();
+        playDemo();
       }
 
       function showBefore() {
@@ -201,11 +272,16 @@ import Footer from '../components/Footer.astro';
         afterBtn?.classList.add('text-white/50');
         beforeBtn?.classList.add('bg-white/10', 'text-white');
         beforeBtn?.classList.remove('text-white/50');
-        stopHighlight();
+        stopSpeech();
       }
 
       beforeBtn?.addEventListener('click', showBefore);
       afterBtn?.addEventListener('click', showAfter);
+
+      // Stop mid-playback if the tab is hidden/navigated away from
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) stopSpeech();
+      });
     </script>
 
 
