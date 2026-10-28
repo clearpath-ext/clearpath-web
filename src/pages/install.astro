@@ -29,7 +29,7 @@ import Footer from '../components/Footer.astro';
             </div>
             <div>
               <h2 class="font-semibold text-white text-lg">Chrome</h2>
-              <p class="text-white/40 text-sm">Also works on Edge, Brave, Arc, Opera</p>
+              <p class="text-white/60 text-sm">Also works on Edge, Brave, Arc, Opera</p>
             </div>
           </div>
           <a
@@ -40,7 +40,7 @@ import Footer from '../components/Footer.astro';
           >
             Chrome Web Store — Coming Soon
           </a>
-          <p class="text-white/30 text-xs text-center mt-3">
+          <p class="text-white/60 text-xs text-center mt-3">
             Not live yet — <span class="underline decoration-white/20">the link above builds it from source</span> in the meantime.
           </p>
         </div>
@@ -53,7 +53,7 @@ import Footer from '../components/Footer.astro';
             </div>
             <div>
               <h2 class="font-semibold text-white text-lg">Firefox</h2>
-              <p class="text-white/40 text-sm">Full feature parity is planned, after Chrome ships</p>
+              <p class="text-white/60 text-sm">Full feature parity is planned, after Chrome ships</p>
             </div>
           </div>
           <a
@@ -64,7 +64,7 @@ import Footer from '../components/Footer.astro';
           >
             Firefox Add-ons — Coming Soon
           </a>
-          <p class="text-white/30 text-xs text-center mt-3">
+          <p class="text-white/60 text-xs text-center mt-3">
             Not live yet — <span class="underline decoration-white/20">the link above builds it from source</span> in the meantime.
           </p>
         </div>
@@ -87,7 +87,7 @@ import Footer from '../components/Footer.astro';
             required
             placeholder="you@example.com"
             autocomplete="email"
-            class="flex-1 px-4 py-3 rounded-lg bg-navy-900 border border-white/10 text-white text-sm placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-brand-blue"
+            class="flex-1 px-4 py-3 rounded-lg bg-navy-900 border border-white/10 text-white text-sm placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-brand-blue"
           />
           <!-- Honeypot — hidden from sighted and AT users, real visitors never fill it in -->
           <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
@@ -100,7 +100,7 @@ import Footer from '../components/Footer.astro';
         </form>
         <p id="notify-status" class="text-sm mt-3" role="status" aria-live="polite"></p>
 
-        <p class="text-white/30 text-xs mt-2">
+        <p class="text-white/60 text-xs mt-2">
           Prefer not to share your email? <a href="https://github.com/clearpath-ext/clearpath-extension" target="_blank" rel="noopener noreferrer" class="text-brand-blue hover:text-brand-green transition-colors">Watch the repo on GitHub</a> instead.
         </p>
       </div>
@@ -188,11 +188,11 @@ import Footer from '../components/Footer.astro';
 
       <!-- API setup CTA -->
       <div class="p-6 rounded-xl bg-brand-blue/5 border border-brand-blue/20">
-        <h3 class="font-semibold text-white mb-2">Want to use Simplify and Summarize?</h3>
+        <h3 class="font-semibold text-white mb-2">Want to use Simplify?</h3>
         <p class="text-white/50 text-sm mb-4">
-          These features use an LLM API to rewrite text in plain language. You bring your own API key — your text goes directly to your provider.
+          Simplify uses an LLM to rewrite text in plain language. You bring your own API key — your text goes directly to your provider.
         </p>
-        <a href="/docs/api-setup" class="text-brand-blue text-sm font-medium hover:text-brand-green transition-colors">
+        <a href="/docs/api-setup/" class="text-brand-blue text-sm font-medium hover:text-brand-green transition-colors">
           API setup guide →
         </a>
       </div>

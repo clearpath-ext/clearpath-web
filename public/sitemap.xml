@@ -6,38 +6,43 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://clearpathext.com/install</loc>
+    <loc>https://clearpathext.com/install/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://clearpathext.com/docs/getting-started</loc>
+    <loc>https://clearpathext.com/docs/getting-started/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://clearpathext.com/docs/profiles</loc>
+    <loc>https://clearpathext.com/docs/profiles/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://clearpathext.com/docs/symbols</loc>
+    <loc>https://clearpathext.com/docs/symbols/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://clearpathext.com/docs/vocabulary</loc>
+    <loc>https://clearpathext.com/docs/vocabulary/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://clearpathext.com/docs/api-setup</loc>
+    <loc>https://clearpathext.com/docs/api-setup/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://clearpathext.com/privacy</loc>
+    <loc>https://clearpathext.com/privacy/</loc>
     <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://clearpathext.com/brand/</loc>
+    <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 </urlset>

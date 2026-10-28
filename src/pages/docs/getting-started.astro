@@ -25,7 +25,7 @@ const sections = [
         <!-- Sidebar TOC -->
         <aside class="hidden lg:block" aria-label="Documentation navigation">
           <div class="sticky top-24 space-y-1">
-            <p class="text-xs font-semibold text-white/30 uppercase tracking-widest mb-4">On this page</p>
+            <p class="text-xs font-semibold text-white/60 uppercase tracking-widest mb-4">On this page</p>
             {sections.map(({ id, label }) => (
               <a
                 href={`#${id}`}
@@ -35,16 +35,16 @@ const sections = [
               </a>
             ))}
             <div class="pt-6 border-t border-white/5 mt-6">
-              <a href="/docs/api-setup" class="block text-sm text-brand-blue hover:text-brand-green transition-colors py-1.5">
+              <a href="/docs/api-setup/" class="block text-sm text-brand-blue hover:text-brand-green transition-colors py-1.5">
                 API Setup →
               </a>
-              <a href="/docs/profiles" class="block text-sm text-white/50 hover:text-white transition-colors py-1.5">
+              <a href="/docs/profiles/" class="block text-sm text-white/50 hover:text-white transition-colors py-1.5">
                 Profiles →
               </a>
-              <a href="/docs/symbols" class="block text-sm text-white/50 hover:text-white transition-colors py-1.5">
+              <a href="/docs/symbols/" class="block text-sm text-white/50 hover:text-white transition-colors py-1.5">
                 Symbol Overlay →
               </a>
-              <a href="/docs/vocabulary" class="block text-sm text-white/50 hover:text-white transition-colors py-1.5">
+              <a href="/docs/vocabulary/" class="block text-sm text-white/50 hover:text-white transition-colors py-1.5">
                 Vocabulary →
               </a>
             </div>
@@ -54,7 +54,7 @@ const sections = [
         <!-- Content -->
         <article class="prose-clearpath min-w-0">
           <h1 class="font-display text-5xl text-white mb-2">Getting Started</h1>
-          <p class="text-white/40 text-lg mb-12">Up and running in under 5 minutes.</p>
+          <p class="text-white/60 text-lg mb-12">Up and running in under 5 minutes.</p>
 
           <section id="installation" class="mb-14 scroll-mt-24">
             <h2 class="font-display text-3xl text-white mb-4">Installation</h2>
@@ -64,18 +64,18 @@ const sections = [
                  class="px-5 py-3 rounded-lg font-medium text-navy-900 bg-brand-gradient hover:opacity-90 transition-opacity text-sm text-center">
                 Install from source (GitHub)
               </a>
-              <a href="/install" class="px-5 py-3 rounded-lg font-medium text-white border border-white/10 hover:border-white/20 transition-all text-sm text-center">
+              <a href="/install/" class="px-5 py-3 rounded-lg font-medium text-white border border-white/10 hover:border-white/20 transition-all text-sm text-center">
                 Install page →
               </a>
             </div>
-            <p class="text-white/40 text-sm mt-4">Chrome users: also works on Edge, Brave, Arc, and Opera.</p>
+            <p class="text-white/60 text-sm mt-4">Chrome users: also works on Edge, Brave, Arc, and Opera.</p>
           </section>
 
           <section id="first-use" class="mb-14 scroll-mt-24">
             <h2 class="font-display text-3xl text-white mb-4">First Use</h2>
             <p class="text-white/60 mb-4">After installing, pin the extension to your toolbar by clicking the puzzle piece icon in Chrome and pinning ClearPath. This puts the icon in your toolbar for quick access.</p>
             <p class="text-white/60 mb-4">Click the ClearPath icon to open the control panel. From here you can toggle features on and off, adjust settings, and manage profiles.</p>
-            <p class="text-white/40 text-sm">🗓 Keyboard shortcuts for these actions are on the roadmap — for now, everything is accessed through the popup or the right-click menu.</p>
+            <p class="text-white/60 text-sm">Keyboard shortcuts for these actions are on the roadmap — for now, everything is accessed through the popup or the right-click menu.</p>
           </section>
 
           <section id="read-aloud" class="mb-14 scroll-mt-24">
@@ -96,7 +96,7 @@ const sections = [
 
           <section id="focus-tools" class="mb-14 scroll-mt-24">
             <h2 class="font-display text-3xl text-white mb-4">Focus Tools</h2>
-            <p class="text-white/60 mb-4">Three tools that help with concentration and reading flow, available anywhere Reading Mode is active:</p>
+            <p class="text-white/60 mb-4">Three tools that help with concentration and reading flow. The reading ruler works on any page; paragraph focus and word complexity work inside Reading Mode:</p>
             <ul class="space-y-2 text-white/60 mb-4">
               <li class="flex gap-2"><span class="text-brand-blue mt-0.5" aria-hidden="true">→</span> <strong class="text-white">Reading ruler</strong> — a coloured band that follows your cursor to help you track lines</li>
               <li class="flex gap-2"><span class="text-brand-blue mt-0.5" aria-hidden="true">→</span> <strong class="text-white">Paragraph focus</strong> — dims everything except the paragraph you're reading</li>
@@ -109,7 +109,7 @@ const sections = [
             <h2 class="font-display text-3xl text-white mb-4">Simplify</h2>
             <p class="text-white/60 mb-4">Simplify rewrites selected text in plain English using an LLM. It requires your own API key — there's no offline fallback for this feature.</p>
             <p class="text-white/60 mb-4"><strong class="text-white">To use:</strong> select any text, right-click, and choose "Simplify." A panel will appear with the rewritten text.</p>
-            <a href="/docs/api-setup" class="text-brand-blue hover:text-brand-green transition-colors text-sm font-medium">
+            <a href="/docs/api-setup/" class="text-brand-blue hover:text-brand-green transition-colors text-sm font-medium">
               Set up your API key →
             </a>
           </section>
@@ -118,7 +118,7 @@ const sections = [
             <h2 class="font-display text-3xl text-white mb-4">Vocabulary</h2>
             <p class="text-white/60 mb-4">Double-click any word to see an instant plain-English definition — no API key needed, and it works fully offline using a bundled dictionary of over 21,000 entries.</p>
             <p class="text-white/60 mb-4"><strong class="text-white">To use:</strong> toggle Vocabulary on in the popup, then double-click any word on the page. Dismiss the definition with Escape or by clicking elsewhere.</p>
-            <a href="/docs/vocabulary" class="text-brand-blue hover:text-brand-green transition-colors text-sm font-medium">
+            <a href="/docs/vocabulary/" class="text-brand-blue hover:text-brand-green transition-colors text-sm font-medium">
               Full vocabulary guide →
             </a>
           </section>
@@ -127,30 +127,30 @@ const sections = [
             <h2 class="font-display text-3xl text-white mb-4">Profiles</h2>
             <p class="text-white/60 mb-4">Profiles let you save a named set of accessibility settings and switch between them quickly. They're especially useful for SLPs and caregivers who configure ClearPath for someone else.</p>
             <p class="text-white/60">Profiles can be exported as JSON and shared — hand a profile file to a caregiver and they can import it with one click.</p>
-            <a href="/docs/profiles" class="inline-block mt-3 text-brand-blue hover:text-brand-green transition-colors text-sm font-medium">
+            <a href="/docs/profiles/" class="inline-block mt-3 text-brand-blue hover:text-brand-green transition-colors text-sm font-medium">
               Full profiles guide →
             </a>
           </section>
 
           <!-- Next steps -->
           <div class="pt-8 border-t border-white/5">
-            <p class="text-white/40 text-sm mb-4">Next steps</p>
+            <p class="text-white/60 text-sm mb-4">Next steps</p>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <a href="/docs/api-setup" class="p-4 rounded-xl bg-navy-800/40 border border-white/5 hover:border-white/10 transition-colors group">
+              <a href="/docs/api-setup/" class="p-4 rounded-xl bg-navy-800/40 border border-white/5 hover:border-white/10 transition-colors group">
                 <p class="font-medium text-white text-sm group-hover:text-brand-blue transition-colors">API Setup →</p>
-                <p class="text-white/40 text-xs mt-1">Set up Simplify with OpenAI, Anthropic, or Ollama</p>
+                <p class="text-white/60 text-xs mt-1">Set up Simplify with OpenAI, Anthropic, or Ollama</p>
               </a>
-              <a href="/docs/symbols" class="p-4 rounded-xl bg-navy-800/40 border border-white/5 hover:border-white/10 transition-colors group">
+              <a href="/docs/symbols/" class="p-4 rounded-xl bg-navy-800/40 border border-white/5 hover:border-white/10 transition-colors group">
                 <p class="font-medium text-white text-sm group-hover:text-brand-blue transition-colors">Symbol Overlay →</p>
-                <p class="text-white/40 text-xs mt-1">Enable AAC symbols on any webpage</p>
+                <p class="text-white/60 text-xs mt-1">Enable AAC symbols on any webpage</p>
               </a>
-              <a href="/docs/vocabulary" class="p-4 rounded-xl bg-navy-800/40 border border-white/5 hover:border-white/10 transition-colors group">
+              <a href="/docs/vocabulary/" class="p-4 rounded-xl bg-navy-800/40 border border-white/5 hover:border-white/10 transition-colors group">
                 <p class="font-medium text-white text-sm group-hover:text-brand-blue transition-colors">Vocabulary →</p>
-                <p class="text-white/40 text-xs mt-1">Offline word definitions, no API key needed</p>
+                <p class="text-white/60 text-xs mt-1">Offline word definitions, no API key needed</p>
               </a>
-              <a href="/docs/profiles" class="p-4 rounded-xl bg-navy-800/40 border border-white/5 hover:border-white/10 transition-colors group">
+              <a href="/docs/profiles/" class="p-4 rounded-xl bg-navy-800/40 border border-white/5 hover:border-white/10 transition-colors group">
                 <p class="font-medium text-white text-sm group-hover:text-brand-blue transition-colors">Profiles →</p>
-                <p class="text-white/40 text-xs mt-1">Save and share accessibility settings</p>
+                <p class="text-white/60 text-xs mt-1">Save and share accessibility settings</p>
               </a>
             </div>
           </div>

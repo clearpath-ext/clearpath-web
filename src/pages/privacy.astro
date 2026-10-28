@@ -11,7 +11,7 @@ import Footer from '../components/Footer.astro';
     <div class="max-w-2xl mx-auto px-6">
 
       <h1 class="font-display text-5xl text-white mb-4">Privacy Policy</h1>
-      <p class="text-white/40 text-sm mb-12">Written in plain English, because our users deserve clear communication.</p>
+      <p class="text-white/60 text-sm mb-12">Written in plain English, because our users deserve clear communication.</p>
 
       <div class="space-y-10 prose-clearpath">
 
@@ -26,12 +26,12 @@ import Footer from '../components/Footer.astro';
 
         <section>
           <h2 class="font-display text-2xl text-white mb-3">What stays on your device</h2>
-          <p class="text-white/60 leading-relaxed">Your settings are saved using your browser's built-in <code class="text-brand-green bg-navy-800 px-1.5 py-0.5 rounded text-sm">storage.sync</code> API. This syncs your settings across your own devices via your browser account. ClearPath never sees or touches this data — it goes directly between your browser and your browser account.</p>
+          <p class="text-white/60 leading-relaxed">Your settings are saved using your browser's built-in <code class="text-brand-green bg-navy-800 px-1.5 py-0.5 rounded text-sm">storage.sync</code> API. This syncs your settings across your own devices via your browser account. ClearPath never sees or touches this data — it goes directly between your browser and your browser account. Your LLM API key is the exception: it stays only on the device where you entered it, is never synced, and is never included in saved or exported profiles.</p>
         </section>
 
         <section>
           <h2 class="font-display text-2xl text-white mb-3">The Simplify feature</h2>
-          <p class="text-white/60 leading-relaxed mb-3">If you use Simplify or Summarize, selected text is sent to your chosen LLM provider (OpenAI, Anthropic, or a local Ollama instance):</p>
+          <p class="text-white/60 leading-relaxed mb-3">If you use Simplify, selected text is sent to your chosen LLM provider (OpenAI, Anthropic, or a local Ollama instance):</p>
           <ul class="space-y-2 text-white/60">
             <li class="flex gap-2"><span class="text-brand-green mt-0.5" aria-hidden="true">→</span> Text goes <strong class="text-white">directly from your browser to the API provider</strong></li>
             <li class="flex gap-2"><span class="text-brand-green mt-0.5" aria-hidden="true">→</span> It does <strong class="text-white">not</strong> pass through any ClearPath server — there is no ClearPath server</li>

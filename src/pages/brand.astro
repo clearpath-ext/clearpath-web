@@ -1,0 +1,163 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const colours = [
+  { name: 'Navy 900', token: 'navy-900', hex: '#0D1F3C', use: 'Backgrounds, icon tile', dark: true },
+  { name: 'Navy 800', token: 'navy-800', hex: '#112240', use: 'Raised surfaces', dark: true },
+  { name: 'Brand blue', token: 'brand-blue', hex: '#5B9BF8', use: 'Gradient start, links, the dot' },
+  { name: 'Brand green', token: 'brand-green', hex: '#6DD9A8', use: 'Gradient end, the chevron' },
+];
+
+const donts = [
+  'Recolour the mark or swap the gradient direction',
+  'Stretch, squash, or rotate it',
+  'Add drop shadows, outlines, or bevels',
+  'Put it on busy photos or low-contrast backgrounds',
+  'Rebuild it from a different font or shape',
+  'Separate the chevron or the dot from the C',
+];
+---
+
+<Base title="Brand" description="ClearPath's logo, colours, and type — with files to download and how to use them.">
+  <Nav />
+
+  <main id="main-content" class="pt-32 pb-24">
+    <div class="max-w-4xl mx-auto px-6">
+
+      <h1 class="font-display text-5xl text-white mb-4">Brand</h1>
+      <p class="text-white/60 text-lg mb-14 max-w-2xl">
+        The logo, colours, and type ClearPath uses. Writing about ClearPath, linking to it, or building on it? Use these files as they are.
+        The master files live in the <a href="https://github.com/clearpath-ext/.github/tree/main/brand" class="text-brand-blue hover:text-brand-green transition-colors">brand folder on GitHub</a>.
+      </p>
+
+      <!-- Logo -->
+      <section class="mb-16" aria-labelledby="logo-heading">
+        <h2 id="logo-heading" class="font-display text-3xl text-white mb-3">The mark</h2>
+        <p class="text-white/60 mb-8 max-w-2xl">
+          A C that starts at a dot and opens onto a chevron: a path from where you are to where you're going.
+        </p>
+        <div class="grid sm:grid-cols-3 gap-5">
+          <figure class="rounded-2xl border border-white/10 bg-navy-900 p-8 flex flex-col items-center">
+            <img src="/brand-assets/clearpath-mark.svg" alt="ClearPath mark on navy" width="96" height="106" class="h-24 w-auto my-4" />
+            <figcaption class="text-white/60 text-sm mt-4">On navy</figcaption>
+          </figure>
+          <figure class="rounded-2xl border border-white/10 bg-white p-8 flex flex-col items-center">
+            <img src="/brand-assets/clearpath-mark.svg" alt="ClearPath mark on white" width="96" height="106" class="h-24 w-auto my-4" />
+            <figcaption class="text-navy-900/70 text-sm mt-4">On white</figcaption>
+          </figure>
+          <figure class="rounded-2xl border border-white/10 bg-navy-800/40 p-8 flex flex-col items-center">
+            <img src="/brand-assets/clearpath-icon.svg" alt="ClearPath app icon" width="104" height="104" class="h-[104px] w-[104px] my-3" />
+            <figcaption class="text-white/60 text-sm mt-4">Icon (extension, favicons, avatars)</figcaption>
+          </figure>
+        </div>
+
+        <h3 class="text-white font-semibold mt-10 mb-3">Downloads</h3>
+        <ul class="grid sm:grid-cols-2 gap-3 text-sm">
+          <li><a href="/brand-assets/clearpath-mark.svg" download class="flex justify-between p-4 rounded-xl border border-white/10 hover:border-white/20 text-white transition-colors"><span>Mark, vector</span><span class="text-white/60">SVG</span></a></li>
+          <li><a href="/brand-assets/clearpath-mark.png" download class="flex justify-between p-4 rounded-xl border border-white/10 hover:border-white/20 text-white transition-colors"><span>Mark, transparent</span><span class="text-white/60">PNG · 465×512</span></a></li>
+          <li><a href="/brand-assets/clearpath-icon.svg" download class="flex justify-between p-4 rounded-xl border border-white/10 hover:border-white/20 text-white transition-colors"><span>Icon, vector</span><span class="text-white/60">SVG</span></a></li>
+          <li><a href="/brand-assets/clearpath-icon-1024.png" download class="flex justify-between p-4 rounded-xl border border-white/10 hover:border-white/20 text-white transition-colors"><span>Icon, large</span><span class="text-white/60">PNG · 1024×1024</span></a></li>
+        </ul>
+      </section>
+
+      <!-- Usage -->
+      <section class="mb-16" aria-labelledby="usage-heading">
+        <h2 id="usage-heading" class="font-display text-3xl text-white mb-6">Using it</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-white font-semibold mb-2">Clear space and size</h3>
+            <p class="text-white/60 leading-relaxed">
+              Leave space around the mark at least as wide as the chevron. Don't show the mark smaller than 16&nbsp;px tall
+              on screen; below about 24&nbsp;px, use the icon (the mark on its navy tile) instead.
+            </p>
+            <h3 class="text-white font-semibold mt-6 mb-2">On dark backgrounds</h3>
+            <p class="text-white/60 leading-relaxed">
+              On navy, the mark can take a soft blue and mint glow, as on the link-preview card. It doesn't need one on white.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-white font-semibold mb-3">Please don't</h3>
+            <ul class="space-y-2">
+              {donts.map((d) => (
+                <li class="flex gap-3 text-white/60"><span class="text-red-300" aria-hidden="true">✕</span>{d}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Colours -->
+      <section class="mb-16" aria-labelledby="colour-heading">
+        <h2 id="colour-heading" class="font-display text-3xl text-white mb-3">Colours</h2>
+        <p class="text-white/60 mb-8">Click a swatch to copy its hex value.</p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {colours.map((c) => (
+            <button type="button" data-copy={c.hex} class="swatch text-left rounded-2xl overflow-hidden border border-white/10 hover:border-white/25 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue">
+              <span class="block h-24" style={`background:${c.hex}`}></span>
+              <span class="block p-4 bg-navy-800/60">
+                <span class="block text-white font-medium">{c.name}</span>
+                <span class="block font-mono text-sm text-white/60 mt-1"><span class="hex">{c.hex}</span></span>
+                <span class="block text-xs text-white/60 mt-1">{c.use}</span>
+              </span>
+            </button>
+          ))}
+        </div>
+        <div class="mt-4 h-14 rounded-2xl bg-brand-gradient flex items-center px-5">
+          <span class="font-mono text-sm text-navy-900">Gradient · #5B9BF8 → #6DD9A8</span>
+        </div>
+        <p class="sr-only" role="status" aria-live="polite" id="copy-status"></p>
+      </section>
+
+      <!-- Type -->
+      <section class="mb-16" aria-labelledby="type-heading">
+        <h2 id="type-heading" class="font-display text-3xl text-white mb-8">Type</h2>
+        <div class="space-y-6">
+          <div class="p-6 rounded-2xl border border-white/10">
+            <p class="text-white/60 text-sm mb-2">DM Serif Display · headings and the wordmark</p>
+            <p class="font-display text-5xl text-white">The web, on your terms.</p>
+          </div>
+          <div class="p-6 rounded-2xl border border-white/10">
+            <p class="text-white/60 text-sm mb-2">DM Sans · body text and interface</p>
+            <p class="text-white text-lg leading-relaxed">ClearPath reads pages aloud, simplifies dense text, and adds AAC symbols to any website.</p>
+          </div>
+          <div class="p-6 rounded-2xl border border-white/10">
+            <p class="text-white/60 text-sm mb-2">JetBrains Mono · code</p>
+            <p class="font-mono text-brand-green">http://localhost:11434</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Name -->
+      <section aria-labelledby="name-heading">
+        <h2 id="name-heading" class="font-display text-3xl text-white mb-4">The name</h2>
+        <p class="text-white/60 leading-relaxed max-w-2xl">
+          <strong class="text-white">ClearPath</strong>: one word, capital C and capital P. Not "Clear Path", "Clearpath", or "CLEARPATH".
+          When describing it, keep it plain: it's a free, open-source browser extension that makes websites easier to read.
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <Footer />
+</Base>
+
+<script>
+  const status = document.getElementById('copy-status');
+  document.querySelectorAll<HTMLButtonElement>('.swatch').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const hex = btn.dataset.copy ?? '';
+      const label = btn.querySelector('.hex');
+      try {
+        await navigator.clipboard.writeText(hex);
+        if (label) label.textContent = 'Copied';
+        if (status) status.textContent = `${hex} copied`;
+        setTimeout(() => { if (label) label.textContent = hex; }, 1200);
+      } catch {
+        if (status) status.textContent = `Couldn't copy. The value is ${hex}`;
+      }
+    });
+  });
+</script>

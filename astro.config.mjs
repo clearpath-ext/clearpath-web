@@ -7,6 +7,10 @@ export default defineConfig({
   site: 'https://clearpathext.com',
   output: 'hybrid',
   adapter: cloudflare(),
+  redirects: {
+    '/docs': '/docs/getting-started/',
+    '/changelog': 'https://github.com/clearpath-ext/clearpath-extension/releases',
+  },
   image: {
     service: passthroughImageService(),
   },
