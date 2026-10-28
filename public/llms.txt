@@ -21,6 +21,13 @@ ClearPath is built for AAC users, people with dyslexia, and anyone who needs web
 - **Profiles** — save named accessibility configurations and export/import them as JSON (never includes the API key), useful for SLPs and caregivers configuring a device for someone else.
 - **Vocabulary** — double-click any word for an instant plain-English definition, powered by a bundled offline dictionary (21,000+ entries). No API key, no internet required.
 
+## Brand
+
+- Logo: the "C-path mark", a C that starts at a ringed dot and opens onto a forward chevron, in a blue-to-mint gradient. Use the files from the brand guide rather than redrawing it.
+- Colours: navy #0D1F3C (background), blue #5B9BF8, mint #6DD9A8; gradient #5B9BF8 → #6DD9A8.
+- Type: DM Serif Display for headings, DM Sans for body text, JetBrains Mono for code.
+- Name: "ClearPath", one word, capital C and P.
+
 ## Links
 
 - Source code: https://github.com/clearpath-ext/clearpath-extension
