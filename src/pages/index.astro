@@ -16,13 +16,6 @@ import Icon from '../components/Icon.astro';
       <!-- Background radial glow -->
       <div class="absolute inset-0 bg-hero-gradient pointer-events-none" aria-hidden="true" />
 
-      <!-- Subtle grid -->
-      <div
-        class="absolute inset-0 opacity-[0.03]"
-        style="background-image: linear-gradient(rgba(91,155,248,1) 1px, transparent 1px), linear-gradient(90deg, rgba(91,155,248,1) 1px, transparent 1px); background-size: 48px 48px;"
-        aria-hidden="true"
-      />
-
       <div class="relative max-w-5xl mx-auto px-6 py-32 text-center">
 
         <!-- Eyebrow -->
@@ -38,7 +31,7 @@ import Icon from '../components/Icon.astro';
         </h1>
 
         <!-- Subhead -->
-        <p class="text-lg md:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed mb-10 animate-fade-up delay-200">
+        <p class="text-lg md:text-xl text-white/75 max-w-2xl mx-auto leading-relaxed mb-10 animate-fade-up delay-200">
           ClearPath is a browser extension that simplifies text, reads pages aloud with word highlighting,
           and displays AAC symbols — so anyone can access any website.
         </p>
@@ -62,14 +55,14 @@ import Icon from '../components/Icon.astro';
         </div>
 
         <!-- Social proof -->
-        <p class="mt-8 text-sm text-white/60 animate-fade-up delay-400">
+        <p class="mt-8 text-sm text-white/75 animate-fade-up delay-400">
           Firefox support planned · No data collected · MIT License
         </p>
       </div>
 
       <!-- Scroll indicator -->
       <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-fade-in delay-500" aria-hidden="true">
-        <span class="text-xs text-white/60 tracking-widest uppercase">Scroll</span>
+        <span class="text-xs text-white/75 tracking-widest uppercase">Scroll</span>
         <div class="w-px h-12 bg-gradient-to-b from-white/20 to-transparent" />
       </div>
     </section>
@@ -80,7 +73,7 @@ import Icon from '../components/Icon.astro';
       <p class="font-display text-3xl md:text-4xl text-white/90 leading-relaxed animate-fade-up">
         The web was built for people who read dense text quickly. That's not everyone.
       </p>
-      <p class="mt-6 text-white/50 text-lg max-w-2xl mx-auto animate-fade-up delay-100">
+      <p class="mt-6 text-white/75 text-lg max-w-2xl mx-auto animate-fade-up delay-100">
         AAC users, people with dyslexia, cognitive disabilities, acquired brain injuries —
         millions of people face a web that wasn't designed with them in mind.
         ClearPath changes that, on any site, right now.
@@ -94,7 +87,7 @@ import Icon from '../components/Icon.astro';
         <h2 id="demo-heading" class="font-display text-3xl md:text-4xl text-white mb-3 animate-fade-up">
           See it work.
         </h2>
-        <p class="text-white/50 animate-fade-up delay-100">
+        <p class="text-white/75 animate-fade-up delay-100">
           A real example of the kind of text ClearPath rewrites — try the toggle.
         </p>
       </div>
@@ -113,7 +106,7 @@ import Icon from '../components/Icon.astro';
             id="demo-after-btn"
             type="button"
             aria-pressed="false"
-            class="px-4 py-1.5 rounded-lg text-sm font-medium transition-colors text-white/50 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
+            class="px-4 py-1.5 rounded-lg text-sm font-medium transition-colors text-white/75 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
           >
             With ClearPath
           </button>
@@ -121,7 +114,7 @@ import Icon from '../components/Icon.astro';
 
         <div class="p-8 md:p-10 min-h-[220px] flex items-center">
           <div id="demo-before-panel" class="w-full">
-            <p class="text-white/60 leading-relaxed">
+            <p class="text-white/75 leading-relaxed">
               Applicants must submit all requisite documentation prior to the commencement of the
               eligibility determination process. Failure to comply with the aforementioned
               requirements may result in the forfeiture of benefits.
@@ -258,9 +251,9 @@ import Icon from '../components/Icon.astro';
         beforeBtn?.setAttribute('aria-pressed', 'false');
         afterBtn?.setAttribute('aria-pressed', 'true');
         beforeBtn?.classList.remove('bg-white/10', 'text-white');
-        beforeBtn?.classList.add('text-white/50');
+        beforeBtn?.classList.add('text-white/75');
         afterBtn?.classList.add('bg-white/10', 'text-white');
-        afterBtn?.classList.remove('text-white/50');
+        afterBtn?.classList.remove('text-white/75');
         playDemo();
       }
 
@@ -270,9 +263,9 @@ import Icon from '../components/Icon.astro';
         afterBtn?.setAttribute('aria-pressed', 'false');
         beforeBtn?.setAttribute('aria-pressed', 'true');
         afterBtn?.classList.remove('bg-white/10', 'text-white');
-        afterBtn?.classList.add('text-white/50');
+        afterBtn?.classList.add('text-white/75');
         beforeBtn?.classList.add('bg-white/10', 'text-white');
-        beforeBtn?.classList.remove('text-white/50');
+        beforeBtn?.classList.remove('text-white/75');
         stopSpeech();
       }
 
@@ -287,12 +280,12 @@ import Icon from '../components/Icon.astro';
 
 
     <!-- ===================== FEATURES ===================== -->
-    <section class="max-w-6xl mx-auto px-6 py-16" aria-labelledby="features-heading">
+    <section id="features" class="max-w-6xl mx-auto px-6 py-16 scroll-mt-24" aria-labelledby="features-heading">
       <div class="text-center mb-16">
         <h2 id="features-heading" class="font-display text-4xl md:text-5xl text-white mb-4 animate-fade-up">
           Everything you need.<br /><span class="gradient-text">Nothing you don't.</span>
         </h2>
-        <p class="text-white/50 max-w-xl mx-auto animate-fade-up delay-100">
+        <p class="text-white/75 max-w-xl mx-auto animate-fade-up delay-100">
           Seven focused tools that work on any website, with no account or setup required.
         </p>
       </div>
@@ -354,7 +347,7 @@ import Icon from '../components/Icon.astro';
               <Icon name={icon} />
             </div>
             <h3 class="font-semibold text-white text-lg mb-2">{title}</h3>
-            <p class="text-white/50 text-sm leading-relaxed">{desc}</p>
+            <p class="text-white/75 text-sm leading-relaxed">{desc}</p>
           </div>
         ))}
 
@@ -373,7 +366,7 @@ import Icon from '../components/Icon.astro';
       <h2 id="screens-heading" class="font-display text-4xl text-white text-center mb-4 animate-fade-up">
         See the real thing.
       </h2>
-      <p class="text-white/60 text-center max-w-xl mx-auto mb-12 animate-fade-up delay-100">
+      <p class="text-white/75 text-center max-w-xl mx-auto mb-12 animate-fade-up delay-100">
         Screenshots from the extension on an ordinary news page.
       </p>
 
@@ -382,7 +375,7 @@ import Icon from '../components/Icon.astro';
           <img src="/screenshots/reading-mode.webp" width="1600" height="938" loading="lazy" decoding="async"
             alt="Reading Mode: a cluttered news article shown as clean, large text on a sepia background, with font, size, column width and theme controls along the top." class="w-full h-auto block" />
         </div>
-        <figcaption class="text-white/60 text-sm mt-3 text-center">
+        <figcaption class="text-white/75 text-sm mt-3 text-center">
           <strong class="text-white font-medium">Reading Mode</strong> strips the page down to the article, in the font, size and colours you choose.
         </figcaption>
       </figure>
@@ -393,7 +386,7 @@ import Icon from '../components/Icon.astro';
             <img src="/screenshots/symbol-overlay.webp" width="1600" height="963" loading="lazy" decoding="async"
               alt="Symbol Overlay: ARASAAC pictograms for words like play, want, come, school, mom and dad shown above those words in the article." class="w-full h-auto block" />
           </div>
-          <figcaption class="text-white/60 text-sm mt-3 text-center">
+          <figcaption class="text-white/75 text-sm mt-3 text-center">
             <strong class="text-white font-medium">Symbol Overlay</strong> puts AAC pictograms above key words, on the page you're already reading.
           </figcaption>
         </figure>
@@ -402,7 +395,7 @@ import Icon from '../components/Icon.astro';
             <img src="/screenshots/popup.webp" width="480" height="900" loading="lazy" decoding="async"
               alt="The ClearPath popup: a Read Page button, Reading Mode, and sections for Focus Tools, Symbol Overlay, Vocabulary, Profiles and settings." class="w-full h-auto block" />
           </div>
-          <figcaption class="text-white/60 text-sm mt-3 text-center">
+          <figcaption class="text-white/75 text-sm mt-3 text-center">
             <strong class="text-white font-medium">The popup</strong> holds every tool and setting.
           </figcaption>
         </figure>
@@ -424,9 +417,10 @@ import Icon from '../components/Icon.astro';
             { group: 'Cognitive disabilities', detail: 'Plain language, reduced complexity' },
             { group: 'SLPs & caregivers', detail: 'Shareable profiles for clients' },
           ].map(({ group, detail }) => (
-            <div class="p-5 rounded-xl bg-navy-800/50 border border-white/5 animate-fade-up">
+            <div class="relative overflow-hidden p-5 pt-6 rounded-xl bg-navy-800/90 border border-white/10 shadow-lg shadow-black/30 hover:border-brand-blue/40 transition-colors animate-fade-up">
+              <span class="absolute left-0 right-0 top-0 h-1 bg-brand-gradient" aria-hidden="true"></span>
               <p class="font-semibold text-white text-sm mb-1">{group}</p>
-              <p class="text-white/60 text-xs leading-relaxed">{detail}</p>
+              <p class="text-white/75 text-xs leading-relaxed">{detail}</p>
             </div>
           ))}
         </div>
@@ -441,7 +435,7 @@ import Icon from '../components/Icon.astro';
           <Icon name="privacy" size={30} />
         </div>
         <h2 class="font-display text-3xl text-white mb-4">Your data goes nowhere.</h2>
-        <p class="text-white/50 leading-relaxed">
+        <p class="text-white/75 leading-relaxed">
           No analytics. No telemetry. No servers. Settings stay in your browser, and your API key never leaves your device.
           If you use LLM features, text goes directly from your browser to your API provider — never through us.
           Everything is open source and auditable.
@@ -486,9 +480,10 @@ import Icon from '../components/Icon.astro';
             a: 'Chrome, plus Edge, Brave, Arc, and Opera. Until the Chrome Web Store listing is live it installs from source, which takes a couple of minutes. Firefox support is planned after Chrome.',
           },
         ].map(({ q, a }) => (
-          <div class="p-5 rounded-xl bg-navy-800/40 border border-white/5 animate-fade-up">
-            <h3 class="font-semibold text-white text-sm mb-2">{q}</h3>
-            <p class="text-white/50 text-sm leading-relaxed">{a}</p>
+          <div class="relative overflow-hidden p-6 pl-7 rounded-xl bg-navy-800/90 border border-white/10 shadow-lg shadow-black/30 hover:border-brand-blue/40 transition-colors animate-fade-up">
+            <span class="absolute left-0 top-0 bottom-0 w-1 bg-brand-gradient" aria-hidden="true"></span>
+            <h3 class="font-semibold text-white text-base mb-2">{q}</h3>
+            <p class="text-white/75 text-sm leading-relaxed">{a}</p>
           </div>
         ))}
       </div>
@@ -500,7 +495,7 @@ import Icon from '../components/Icon.astro';
       <h2 class="font-display text-4xl text-white mb-4 animate-fade-up">
         Community built.<br /><span class="gradient-text">Everyone welcome.</span>
       </h2>
-      <p class="text-white/50 max-w-xl mx-auto mb-8 animate-fade-up delay-100">
+      <p class="text-white/75 max-w-xl mx-auto mb-8 animate-fade-up delay-100">
         ClearPath is open source and welcomes contributors: developers, designers, SLPs, and
         accessibility advocates.
       </p>

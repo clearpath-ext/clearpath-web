@@ -15,7 +15,7 @@ import Footer from '../components/Footer.astro';
 
       <div class="text-center mb-16">
         <h1 class="font-display text-5xl text-white mb-4">Install ClearPath</h1>
-        <p class="text-white/50 text-lg">Free. No account. Works immediately.</p>
+        <p class="text-white/75 text-lg">Free. No account. Works immediately.</p>
       </div>
 
       <!-- Browser options -->
@@ -29,7 +29,7 @@ import Footer from '../components/Footer.astro';
             </div>
             <div>
               <h2 class="font-semibold text-white text-lg">Chrome</h2>
-              <p class="text-white/60 text-sm">Also works on Edge, Brave, Arc, Opera</p>
+              <p class="text-white/75 text-sm">Also works on Edge, Brave, Arc, Opera</p>
             </div>
           </div>
           <a
@@ -40,7 +40,7 @@ import Footer from '../components/Footer.astro';
           >
             Chrome Web Store — Coming Soon
           </a>
-          <p class="text-white/60 text-xs text-center mt-3">
+          <p class="text-white/75 text-xs text-center mt-3">
             Not live yet — <span class="underline decoration-white/20">the link above builds it from source</span> in the meantime.
           </p>
         </div>
@@ -53,7 +53,7 @@ import Footer from '../components/Footer.astro';
             </div>
             <div>
               <h2 class="font-semibold text-white text-lg">Firefox</h2>
-              <p class="text-white/60 text-sm">Full feature parity is planned, after Chrome ships</p>
+              <p class="text-white/75 text-sm">Full feature parity is planned, after Chrome ships</p>
             </div>
           </div>
           <a
@@ -64,7 +64,7 @@ import Footer from '../components/Footer.astro';
           >
             Firefox Add-ons — Coming Soon
           </a>
-          <p class="text-white/60 text-xs text-center mt-3">
+          <p class="text-white/75 text-xs text-center mt-3">
             Not live yet — <span class="underline decoration-white/20">the link above builds it from source</span> in the meantime.
           </p>
         </div>
@@ -74,7 +74,7 @@ import Footer from '../components/Footer.astro';
       <!-- Notify me -->
       <div class="p-6 rounded-2xl bg-navy-800/40 border border-white/5 mb-16 -mt-8">
         <h2 class="font-semibold text-white mb-1">Get notified at launch</h2>
-        <p class="text-white/50 text-sm mb-4">
+        <p class="text-white/75 text-sm mb-4">
           ClearPath is launching on Chrome first, with full Firefox support to follow. Leave your email and we'll let you know the moment either store listing goes live — nothing else, ever.
         </p>
 
@@ -100,7 +100,7 @@ import Footer from '../components/Footer.astro';
         </form>
         <p id="notify-status" class="text-sm mt-3" role="status" aria-live="polite"></p>
 
-        <p class="text-white/60 text-xs mt-2">
+        <p class="text-white/75 text-xs mt-2">
           Prefer not to share your email? <a href="https://github.com/clearpath-ext/clearpath-extension" target="_blank" rel="noopener noreferrer" class="text-brand-blue hover:text-brand-green transition-colors">Watch the repo on GitHub</a> instead.
         </p>
       </div>
@@ -120,7 +120,7 @@ import Footer from '../components/Footer.astro';
           const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
           if (submitBtn) submitBtn.disabled = true;
           status.textContent = 'Sending…';
-          status.className = 'text-sm mt-3 text-white/50';
+          status.className = 'text-sm mt-3 text-white/75';
 
           try {
             const res = await fetch('/api/notify', {
@@ -179,7 +179,7 @@ import Footer from '../components/Footer.astro';
               </div>
               <div>
                 <h3 class="font-semibold text-white mb-1">{title}</h3>
-                <p class="text-white/50 text-sm leading-relaxed">{body}</p>
+                <p class="text-white/75 text-sm leading-relaxed">{body}</p>
               </div>
             </li>
           ))}
@@ -189,7 +189,7 @@ import Footer from '../components/Footer.astro';
       <!-- API setup CTA -->
       <div class="p-6 rounded-xl bg-brand-blue/5 border border-brand-blue/20">
         <h3 class="font-semibold text-white mb-2">Want to use Simplify?</h3>
-        <p class="text-white/50 text-sm mb-4">
+        <p class="text-white/75 text-sm mb-4">
           Simplify uses an LLM to rewrite text in plain language. You bring your own API key — your text goes directly to your provider.
         </p>
         <a href="/docs/api-setup/" class="text-brand-blue text-sm font-medium hover:text-brand-green transition-colors">

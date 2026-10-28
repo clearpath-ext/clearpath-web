@@ -28,7 +28,7 @@ const current = Astro.url.pathname;
               'text-sm font-medium transition-colors',
               current.startsWith(href)
                 ? 'text-brand-blue'
-                : 'text-white/60 hover:text-white',
+                : 'text-white/75 hover:text-white',
             ]}
           >
             {label}
@@ -41,7 +41,7 @@ const current = Astro.url.pathname;
     <div class="flex items-center gap-3">
       <a
         href="https://github.com/clearpath-ext/clearpath-extension"
-        class="hidden md:flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors"
+        class="hidden md:flex items-center gap-2 text-sm text-white/75 hover:text-white transition-colors"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="View on GitHub (opens in new tab)"

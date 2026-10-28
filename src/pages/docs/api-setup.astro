@@ -14,11 +14,11 @@ import Footer from '../../components/Footer.astro';
     <div class="max-w-3xl mx-auto px-6">
 
       <div class="mb-12">
-        <a href="/docs/getting-started/" class="text-sm text-white/60 hover:text-white transition-colors">← Getting Started</a>
+        <a href="/docs/getting-started/" class="text-sm text-white/75 hover:text-white transition-colors">← Getting Started</a>
       </div>
 
       <h1 class="font-display text-5xl text-white mb-4">API Setup</h1>
-      <p class="text-white/50 text-lg mb-12">Connect an LLM to use Simplify on any webpage.</p>
+      <p class="text-white/75 text-lg mb-12">Connect an LLM to use Simplify on any webpage.</p>
 
       <div class="p-6 rounded-xl bg-brand-blue/5 border border-brand-blue/20 mb-12">
         <p class="text-white/70 text-sm">
@@ -30,7 +30,7 @@ import Footer from '../../components/Footer.astro';
 
         <section>
           <h2 class="font-display text-2xl text-white mb-4">Supported providers</h2>
-          <p class="text-white/60 mb-6">ClearPath connects directly to OpenAI or Anthropic with your own key, or to a model running locally in Ollama.</p>
+          <p class="text-white/75 mb-6">ClearPath connects directly to OpenAI or Anthropic with your own key, or to a model running locally in Ollama.</p>
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {[
               { name: 'OpenAI', detail: 'GPT-4o mini', url: 'https://platform.openai.com/api-keys' },
@@ -44,7 +44,7 @@ import Footer from '../../components/Footer.astro';
                 class="p-4 rounded-xl bg-navy-800/40 border border-white/5 hover:border-white/10 transition-colors"
               >
                 <p class="font-medium text-white text-sm">{name}</p>
-                <p class="text-white/60 text-xs mt-1">{detail}</p>
+                <p class="text-white/75 text-xs mt-1">{detail}</p>
               </a>
             ))}
           </div>
@@ -64,7 +64,7 @@ import Footer from '../../components/Footer.astro';
                 <span class="flex-shrink-0 w-6 h-6 rounded-full bg-brand-gradient flex items-center justify-center text-navy-900 font-bold text-xs">
                   {i + 1}
                 </span>
-                <p class="text-white/60 text-sm pt-0.5">{step}</p>
+                <p class="text-white/75 text-sm pt-0.5">{step}</p>
               </li>
             ))}
           </ol>
@@ -72,17 +72,17 @@ import Footer from '../../components/Footer.astro';
 
         <section>
           <h2 class="font-display text-2xl text-white mb-4">Privacy</h2>
-          <p class="text-white/60 text-sm leading-relaxed">
+          <p class="text-white/75 text-sm leading-relaxed">
             Your API key is stored only on the device where you enter it. It isn't synced to your browser account, isn't included in exported profiles, and is only ever sent to your chosen provider to authenticate. If you use ClearPath on another computer, enter the key there too. When you use Simplify, the selected text is sent directly from your browser to that provider — it never passes through any ClearPath servers. We have no servers.
           </p>
         </section>
 
         <section>
           <h2 class="font-display text-2xl text-white mb-4">Using Ollama (offline)</h2>
-          <p class="text-white/60 text-sm leading-relaxed mb-4">
+          <p class="text-white/75 text-sm leading-relaxed mb-4">
             Ollama lets you run LLMs locally — your text never leaves your machine. Install Ollama, pull a model, and set the base URL in ClearPath's settings to <code class="text-brand-green bg-navy-800 px-1.5 py-0.5 rounded">http://localhost:11434</code>.
           </p>
-          <p class="text-white/60 text-sm">Default model: <code class="text-brand-green bg-navy-800 px-1.5 py-0.5 rounded">llama3.2</code> — fast and accurate for plain-language rewriting. You can change this in ClearPath's LLM Settings.</p>
+          <p class="text-white/75 text-sm">Default model: <code class="text-brand-green bg-navy-800 px-1.5 py-0.5 rounded">llama3.2</code> — fast and accurate for plain-language rewriting. You can change this in ClearPath's LLM Settings.</p>
         </section>
 
       </div>

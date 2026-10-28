@@ -17,6 +17,12 @@
 
   body {
     @apply bg-navy-900 text-white font-body;
+    /* Faint blueprint grid behind every page (was hero-only) */
+    background-image:
+      linear-gradient(rgba(91, 155, 248, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(91, 155, 248, 0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+    background-attachment: fixed;
   }
 
   ::selection {
@@ -77,4 +83,11 @@
 .animate-fade-up,
 .animate-fade-in {
   opacity: 0;
+}
+
+/* Tailwind Typography wraps inline <code> in literal backticks; the code
+   pill styling already marks it as code. */
+.prose :where(code)::before,
+.prose :where(code)::after {
+  content: none;
 }
