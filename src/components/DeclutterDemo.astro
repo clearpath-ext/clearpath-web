@@ -22,7 +22,7 @@ const article = [
   SYMBOL('teacher', 'teacher'),
   'each',
   SYMBOL('morning,', 'morning'),
-  'prior to the <span class="dd-ruler-anchor">commencement</span> of scheduled instruction. Parents wishing to enrol their child should complete the relevant documentation at their earliest convenience.',
+  'prior to the <span class="dd-ruler-anchor">commencement</span> of scheduled instruction.<span class="dd-extra"> Parents wishing to enrol their child should complete the relevant documentation at their earliest convenience.</span>',
 ].join(' ');
 
 const steps = ['Clutter cleared', 'Reading Mode', 'Reading ruler', 'AAC symbols'];
@@ -259,6 +259,8 @@ const steps = ['Clutter cleared', 'Reading Mode', 'Reading ruler', 'AAC symbols'
     padding: calc(0.7rem * (1 - var(--clutter))) 0;
     height: calc(2.3rem * (1 - var(--clutter)));
     overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
   .dd-layout {
     display: grid;
@@ -407,9 +409,23 @@ const steps = ['Clutter cleared', 'Reading Mode', 'Reading ruler', 'AAC symbols'
   }
   .dd-cookie-btn { margin: 0; background: #2F6FE4; }
 
+  /* Phones: the whole stage (steps + browser) must fit the visible screen
+     (svh = with the browser's toolbars showing), and the finished article
+     must fit the page box, so the text is shorter and tighter here */
   @media (max-width: 640px) {
     .dd-track { height: 240vh; }
-    .dd-page { height: min(62vh, 28rem); }
+    .dd-sticky { top: 4.5rem; gap: 0.75rem; padding-block: 0.5rem; }
+    .dd-page { height: max(19rem, calc(100svh - 12.5rem)); }
+    .dd-chrome { padding: 0.45rem 0.7rem; }
+    .dd-text :global(.dd-extra), .dd-kicker { display: none; }
+    .dd-article { padding: 0.9rem calc(0.9rem + var(--reader) * 3%); }
+    .dd-title { font-size: calc(1rem + var(--reader) * 0.15rem); margin-bottom: 0.5rem; }
+    .dd-text {
+      font-size: calc(0.75rem + var(--reader) * 0.12rem);
+      line-height: calc(1.4 + var(--reader) * 0.25);
+    }
+    .dd-text :global(.dd-w) { padding-top: calc(var(--symbols) * 1.7em); }
+    .dd-text :global(.dd-pic) { width: 1.5em; height: 1.5em; margin-left: -0.75em; }
     .dd-layout { grid-template-columns: minmax(0, 1fr) calc((1 - var(--clutter)) * 34%); }
     .dd-ad { height: 3.5rem; font-size: 0.65rem; }
     .dd-ad--tall { height: 4.5rem; }
