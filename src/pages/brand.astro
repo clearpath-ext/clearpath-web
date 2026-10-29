@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 
-const colours = [
+const colors = [
   { name: 'Navy 900', token: 'navy-900', hex: '#0D1F3C', use: 'Backgrounds, icon tile', dark: true },
   { name: 'Navy 800', token: 'navy-800', hex: '#112240', use: 'Raised surfaces', dark: true },
   { name: 'Brand blue', token: 'brand-blue', hex: '#5B9BF8', use: 'Gradient start, links, the dot' },
@@ -11,7 +11,7 @@ const colours = [
 ];
 
 const donts = [
-  'Recolour the mark or swap the gradient direction',
+  'Recolor the mark or swap the gradient direction',
   'Stretch, squash, or rotate it',
   'Add drop shadows, outlines, or bevels',
   'Put it on busy photos or low-contrast backgrounds',
@@ -20,7 +20,7 @@ const donts = [
 ];
 ---
 
-<Base title="Brand" description="ClearPath's logo, colours, and type — with files to download and how to use them.">
+<Base title="Brand" description="ClearPath's logo, colors, and type — with files to download and how to use them.">
   <Nav />
 
   <main id="main-content" class="pt-32 pb-24">
@@ -28,7 +28,7 @@ const donts = [
 
       <h1 class="font-display text-5xl text-white mb-4">Brand</h1>
       <p class="text-white/75 text-lg mb-14 max-w-2xl">
-        The logo, colours, and type ClearPath uses. Writing about ClearPath, linking to it, or building on it? Use these files as they are.
+        The logo, colors, and type ClearPath uses. Writing about ClearPath, linking to it, or building on it? Use these files as they are.
         The master files live in the <a href="https://github.com/clearpath-ext/.github/tree/main/brand" class="text-brand-blue hover:text-brand-green transition-colors">brand folder on GitHub</a>.
       </p>
 
@@ -88,12 +88,12 @@ const donts = [
         </div>
       </section>
 
-      <!-- Colours -->
-      <section class="mb-16" aria-labelledby="colour-heading">
-        <h2 id="colour-heading" class="font-display text-3xl text-white mb-3">Colours</h2>
+      <!-- Colors -->
+      <section class="mb-16" aria-labelledby="color-heading">
+        <h2 id="color-heading" class="font-display text-3xl text-white mb-3">Colors</h2>
         <p class="text-white/75 mb-8">Click a swatch to copy its hex value.</p>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {colours.map((c) => (
+          {colors.map((c) => (
             <button type="button" data-copy={c.hex} class="swatch text-left rounded-2xl overflow-hidden border border-white/10 hover:border-white/25 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue">
               <span class="block h-24" style={`background:${c.hex}`}></span>
               <span class="block p-4 bg-navy-800/60">

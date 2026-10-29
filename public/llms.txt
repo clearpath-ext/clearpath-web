@@ -24,7 +24,7 @@ ClearPath is built for AAC users, people with dyslexia, and anyone who needs web
 ## Brand
 
 - Logo: the "C-path mark", a C that starts at a ringed dot and opens onto a forward chevron, in a blue-to-mint gradient. Use the files from the brand guide rather than redrawing it.
-- Colours: navy #0D1F3C (background), blue #5B9BF8, mint #6DD9A8; gradient #5B9BF8 → #6DD9A8.
+- Colors: navy #0D1F3C (background), blue #5B9BF8, mint #6DD9A8; gradient #5B9BF8 → #6DD9A8.
 - Type: DM Serif Display for headings, DM Sans for body text, JetBrains Mono for code.
 - Name: "ClearPath", one word, capital C and P.
 
@@ -34,4 +34,4 @@ ClearPath is built for AAC users, people with dyslexia, and anyone who needs web
 - Organization: https://github.com/clearpath-ext
 - Contact: hello@clearpathext.com
 - Install: https://clearpathext.com/install/
-- Brand assets (logo, colours, type): https://clearpathext.com/brand/
+- Brand assets (logo, colors, type): https://clearpathext.com/brand/
