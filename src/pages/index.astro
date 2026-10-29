@@ -97,13 +97,14 @@ import DeclutterDemo from '../components/DeclutterDemo.astro';
         </p>
       </div>
 
-      <div class="rounded-2xl border border-white/5 bg-navy-800/30 overflow-hidden animate-fade-up delay-200">
-        <div class="flex items-center justify-center gap-1 p-3 border-b border-white/5" role="group" aria-label="Demo view">
+      <div class="gradient-border rounded-2xl bg-navy-800/80 overflow-hidden shadow-[0_30px_80px_-30px_rgba(91,155,248,0.45)] animate-fade-up delay-200">
+        <div class="flex items-center justify-center p-4 border-b border-white/10 bg-navy-900/40">
+          <div class="inline-flex gap-1 p-1 rounded-xl bg-navy-950/70 border border-white/10" role="group" aria-label="Demo view">
           <button
             id="demo-before-btn"
             type="button"
             aria-pressed="true"
-            class="px-4 py-1.5 rounded-lg text-sm font-medium transition-colors bg-white/10 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
+            class="px-5 py-2 rounded-lg text-sm font-medium transition-all bg-brand-gradient text-navy-900 font-semibold shadow-[0_4px_16px_-4px_rgba(91,155,248,0.6)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
           >
             Before
           </button>
@@ -111,10 +112,11 @@ import DeclutterDemo from '../components/DeclutterDemo.astro';
             id="demo-after-btn"
             type="button"
             aria-pressed="false"
-            class="px-4 py-1.5 rounded-lg text-sm font-medium transition-colors text-white/75 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
+            class="px-5 py-2 rounded-lg text-sm font-medium transition-all text-white/75 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
           >
             With ClearPath
           </button>
+          </div>
         </div>
 
         <div class="p-8 md:p-10 min-h-[220px] flex items-center">
@@ -277,15 +279,21 @@ import DeclutterDemo from '../components/DeclutterDemo.astro';
         window.speechSynthesis.speak(utterance);
       }
 
+      // Active tab: brand-gradient pill; inactive: plain text
+      const ACTIVE = 'bg-brand-gradient text-navy-900 font-semibold shadow-[0_4px_16px_-4px_rgba(91,155,248,0.6)]'.split(' ');
+      function setActive(on: HTMLElement | null, off: HTMLElement | null) {
+        on?.classList.add(...ACTIVE);
+        on?.classList.remove('text-white/75', 'hover:text-white');
+        off?.classList.remove(...ACTIVE);
+        off?.classList.add('text-white/75', 'hover:text-white');
+      }
+
       function showAfter() {
         beforePanel?.setAttribute('hidden', '');
         afterPanel?.removeAttribute('hidden');
         beforeBtn?.setAttribute('aria-pressed', 'false');
         afterBtn?.setAttribute('aria-pressed', 'true');
-        beforeBtn?.classList.remove('bg-white/10', 'text-white');
-        beforeBtn?.classList.add('text-white/75');
-        afterBtn?.classList.add('bg-white/10', 'text-white');
-        afterBtn?.classList.remove('text-white/75');
+        setActive(afterBtn, beforeBtn);
         playDemo();
       }
 
@@ -294,10 +302,7 @@ import DeclutterDemo from '../components/DeclutterDemo.astro';
         beforePanel?.removeAttribute('hidden');
         afterBtn?.setAttribute('aria-pressed', 'false');
         beforeBtn?.setAttribute('aria-pressed', 'true');
-        afterBtn?.classList.remove('bg-white/10', 'text-white');
-        afterBtn?.classList.add('text-white/75');
-        beforeBtn?.classList.add('bg-white/10', 'text-white');
-        beforeBtn?.classList.remove('text-white/75');
+        setActive(beforeBtn, afterBtn);
         stopSpeech();
       }
 

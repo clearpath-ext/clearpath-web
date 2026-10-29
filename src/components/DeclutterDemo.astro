@@ -22,7 +22,7 @@ const article = [
   SYMBOL('teacher', 'teacher'),
   'each',
   SYMBOL('morning,', 'morning'),
-  'prior to the commencement of scheduled instruction. Parents wishing to enrol their child should complete the relevant documentation at their earliest convenience.',
+  'prior to the <span class="dd-ruler-anchor">commencement</span> of scheduled instruction. Parents wishing to enrol their child should complete the relevant documentation at their earliest convenience.',
 ].join(' ');
 
 const steps = ['Clutter cleared', 'Reading Mode', 'Reading ruler', 'AAC symbols'];
@@ -107,6 +107,21 @@ const steps = ['Clutter cleared', 'Reading Mode', 'Reading ruler', 'AAC symbols'
     };
     const reduced = () => (window as any).isMotionReduced?.() === true;
 
+    // Wrap the ruler around the line holding the anchor word. The text reflows
+    // as the phases change, so this is measured, not a fixed position.
+    const ruler = track.querySelector<HTMLElement>('.dd-ruler');
+    const anchor = track.querySelector<HTMLElement>('.dd-ruler-anchor');
+    const article = track.querySelector<HTMLElement>('.dd-article');
+    const placeRuler = (amount: number) => {
+      if (!ruler || !anchor || !article || amount <= 0) return;
+      const line = anchor.getClientRects()[0];
+      if (!line) return;
+      const box = article.getBoundingClientRect();
+      const pad = line.height * 0.35;
+      ruler.style.top = `${line.top - box.top - pad}px`;
+      ruler.style.height = `${line.height + pad * 2}px`;
+    };
+
     const set = (p: number) => {
       const phases = [
         smooth(0.04, 0.26, p),  // clutter
@@ -117,6 +132,7 @@ const steps = ['Clutter cleared', 'Reading Mode', 'Reading ruler', 'AAC symbols'
       ['--clutter', '--reader', '--ruler', '--symbols'].forEach((name, i) =>
         track.style.setProperty(name, phases[i].toFixed(3)),
       );
+      placeRuler(phases[2]);
       steps.forEach((el, i) => {
         el.classList.toggle('is-done', phases[i] >= 0.5);
         el.classList.toggle('is-current', phases[i] >= 0.5 && (i === phases.length - 1 || phases[i + 1] < 0.5));
@@ -311,9 +327,9 @@ const steps = ['Clutter cleared', 'Reading Mode', 'Reading ruler', 'AAC symbols'
     position: absolute;
     left: 0;
     right: 0;
-    top: 46%;
-    height: 2.4em;
-    font-size: calc(0.8rem + var(--reader) * 0.25rem);
+    /* top and height are set by the script from the anchor word's line */
+    top: 0;
+    height: 0;
     background: rgba(91, 155, 248, 0.12);
     border-block: 2px solid rgba(91, 155, 248, 0.55);
     box-shadow: 0 0 0 100vmax rgba(13, 31, 60, 0.07);
