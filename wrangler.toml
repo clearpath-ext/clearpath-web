@@ -7,4 +7,10 @@ pages_build_output_dir = "dist"
 # Set secrets via: npx wrangler pages secret put <NAME>
 # RESEND_API_KEY
 # FORWARD_TO_EMAIL
-# INBOUND_WEBHOOK_SECRET
+
+# Per-IP throttle for /api/notify (namespace ids are account-wide;
+# redacted-records uses 1001/1002, the portfolio API 2001/2002)
+[[ratelimits]]
+name = "NOTIFY_LIMIT"
+namespace_id = "3001"
+simple = { limit = 3, period = 60 }

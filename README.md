@@ -54,43 +54,26 @@ Set in Cloudflare Pages dashboard under **Settings → Environment Variables**, 
 ```bash
 npx wrangler pages secret put RESEND_API_KEY
 npx wrangler pages secret put FORWARD_TO_EMAIL
-npx wrangler pages secret put INBOUND_WEBHOOK_SECRET
 ```
 
 | Variable | Description |
 |---|---|
-| `RESEND_API_KEY` | Your Resend API key |
-| `FORWARD_TO_EMAIL` | Your personal email for forwarding inbound mail |
-| `INBOUND_WEBHOOK_SECRET` | Random secret to verify Resend webhook requests |
+| `RESEND_API_KEY` | Your Resend API key (sends the notify-me emails) |
+| `FORWARD_TO_EMAIL` | Your personal inbox for notify-me signups |
 
 Copy `.env.example` to `.env` for local development.
 
 ---
 
-## Email Setup (hello@clearpathext.com)
+## Email (hello@clearpathext.com)
 
-ClearPath uses Resend for both sending and receiving email at `hello@clearpathext.com`.
+Incoming mail doesn't touch this site. Cloudflare Email Routing (the MX records on
+clearpathext.com) hands each message to the `clearpath-email` Worker, which forwards
+it to your inbox through Resend with Reply-To set to the sender. Outgoing mail from
+`hello@clearpathext.com` is sent through Resend.
 
-```
-Someone emails hello@clearpathext.com
-        ↓
-Resend catches it (MX records on clearpathext.com)
-        ↓
-Resend POSTs to https://clearpathext.com/api/inbound-email
-        ↓
-API route verifies webhook secret
-        ↓
-Forwards to FORWARD_TO_EMAIL via Resend, Reply-To set to original sender
-        ↓
-Reply directly from your inbox — sender receives it as hello@clearpathext.com
-```
-
-### Setup steps
-
-1. Add `clearpathext.com` to Resend → copy the DNS records into Cloudflare DNS
-2. In Resend → Inbound → add route: `hello@clearpathext.com` → `https://clearpathext.com/api/inbound-email`
-3. Set the three environment variables above
-4. Send a test email to `hello@clearpathext.com`
+This site only sends one kind of email: `/api/notify` forwards "notify me when
+ClearPath launches" signups to `FORWARD_TO_EMAIL`.
 
 ---
 
@@ -103,7 +86,7 @@ src/
 │   ├── install.astro         # Install page
 │   ├── privacy.astro         # Privacy policy
 │   ├── api/
-│   │   └── inbound-email.ts  # Resend inbound webhook
+│   │   └── notify.ts         # Launch notify-me form
 │   └── docs/
 │       └── getting-started.astro
 ├── components/

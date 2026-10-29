@@ -1,7 +1,7 @@
 // src/pages/api/notify.ts
 // Accepts a "notify me when ClearPath launches" submission from /install and
-// forwards it to the team inbox via Resend's send API — reuses the same
-// RESEND_API_KEY / FORWARD_TO_EMAIL secrets as the inbound-email webhook.
+// forwards it to the team inbox via Resend's send API (RESEND_API_KEY /
+// FORWARD_TO_EMAIL secrets).
 // There's no subscriber list yet; each submission is just a forwarded email
 // the team can track/reply to. Good enough for pre-launch volume.
 
@@ -44,11 +44,26 @@ export const POST: APIRoute = async ({ request, locals }) => {
       });
     }
 
+    // Each submission emails the team inbox, so throttle per IP
+    const limiter = env.NOTIFY_LIMIT as { limit(opts: { key: string }): Promise<{ success: boolean }> } | undefined;
+    if (limiter) {
+      const ip = request.headers.get('CF-Connecting-IP') ?? 'unknown';
+      const { success } = await limiter.limit({ key: ip });
+      if (!success) {
+        return new Response(JSON.stringify({ error: 'Too many requests. Please wait a minute and try again.' }), {
+          status: 429,
+          headers: { 'Content-Type': 'application/json' },
+        });
+      }
+    } else {
+      console.error('Notify endpoint: NOTIFY_LIMIT binding is missing');
+    }
+
     const resend = new Resend(apiKey);
     const { error } = await resend.emails.send({
       from: 'ClearPath Notify <hello@clearpathext.com>',
       to: [forwardTo],
-      reply_to: email,
+      replyTo: email,
       subject: 'ClearPath launch notify-me signup',
       text: `${email} asked to be notified when ClearPath launches on the Chrome Web Store / Firefox Add-ons.`,
     });
