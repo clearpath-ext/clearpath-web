@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import Icon from '../components/Icon.astro';
+import DeclutterDemo from '../components/DeclutterDemo.astro';
 ---
 
 <Base title="The web, on your terms">
@@ -81,6 +82,10 @@ import Icon from '../components/Icon.astro';
     </section>
 
 
+    <!-- ===================== SCROLL DEMO ===================== -->
+    <DeclutterDemo />
+
+
     <!-- ===================== DEMO ===================== -->
     <section class="max-w-4xl mx-auto px-6 py-16" aria-labelledby="demo-heading">
       <div class="text-center mb-10">
@@ -122,19 +127,31 @@ import Icon from '../components/Icon.astro';
           </div>
 
           <div id="demo-after-panel" class="w-full" hidden>
-            <div class="flex items-center gap-2 mb-5 text-brand-blue text-sm font-medium" aria-hidden="true">
-              <span class="relative flex h-2 w-2">
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-blue opacity-75" />
-                <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-blue" />
-              </span>
-              Reading aloud
+            <div class="flex items-center justify-between gap-4 mb-5">
+              <div class="flex items-center gap-2 text-brand-blue text-sm font-medium" aria-hidden="true">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-blue opacity-75" />
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-blue" />
+                </span>
+                Reading aloud
+              </div>
+              <button
+                id="demo-replay-btn"
+                type="button"
+                class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-sm text-white/75 border border-white/10 hover:text-white hover:border-white/25 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
+                Play again
+              </button>
             </div>
-            <p id="demo-words" class="text-white text-xl md:text-2xl leading-relaxed tracking-wide">
+            <!-- The highlight is one pill that glides from word to word, like the extension -->
+            <p id="demo-words" class="relative isolate text-white text-xl md:text-2xl leading-relaxed tracking-wide">
+              <span id="demo-glide" class="demo-glide" aria-hidden="true" />
               {[
                 'You', 'must', 'send', 'your', 'papers', 'before', 'we', 'check', 'if', 'you',
                 'qualify.', 'If', 'you', "don't", 'send', 'them,', 'you', 'may', 'lose', 'your', 'benefits.',
               ].map((word) => (
-                <span class="demo-word rounded transition-colors duration-150">{word}{' '}</span>
+                <span class="demo-word">{word}{' '}</span>
               ))}
             </p>
           </div>
@@ -156,13 +173,28 @@ import Icon from '../components/Icon.astro';
       let fallbackStartTimer: ReturnType<typeof setTimeout> | null = null;
       let wordIndex = 0;
 
+      const glide = document.getElementById('demo-glide');
+
       function clearHighlight() {
-        words.forEach((w) => w.classList.remove('bg-brand-blue/30'));
+        glide?.classList.remove('is-on');
       }
 
+      // Move the pill over word i. The trailing space is part of each span,
+      // so measure the text node's first glyphs only via a Range.
       function highlightWord(i: number) {
-        clearHighlight();
-        words[i]?.classList.add('bg-brand-blue/30');
+        const word = words[i];
+        const box = word?.parentElement?.getBoundingClientRect();
+        if (!word || !glide || !box) return;
+        const range = document.createRange();
+        const text = word.firstChild;
+        if (!text) return;
+        range.setStart(text, 0);
+        range.setEnd(text, (text.textContent ?? '').trimEnd().length);
+        const r = range.getBoundingClientRect();
+        glide.style.transform = `translate(${r.left - box.left - 4}px, ${r.top - box.top - 2}px)`;
+        glide.style.width = `${r.width + 8}px`;
+        glide.style.height = `${r.height + 4}px`;
+        glide.classList.add('is-on');
       }
 
       function stopFallback() {
@@ -268,6 +300,11 @@ import Icon from '../components/Icon.astro';
         beforeBtn?.classList.remove('text-white/75');
         stopSpeech();
       }
+
+      document.getElementById('demo-replay-btn')?.addEventListener('click', () => {
+        stopSpeech();
+        playDemo();
+      });
 
       beforeBtn?.addEventListener('click', showBefore);
       afterBtn?.addEventListener('click', showAfter);

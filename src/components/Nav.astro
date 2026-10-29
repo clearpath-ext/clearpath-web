@@ -14,7 +14,15 @@ const current = Astro.url.pathname;
   <nav class="relative max-w-6xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
     <!-- Logo -->
     <a href="/" class="flex items-center gap-3 group" aria-label="ClearPath home">
-      <img src="/clearpath-mark.svg" alt="" width="26" height="28" class="transition-transform group-hover:scale-110" />
+      <!-- Inline (not <img>) so the first-visit draw-in can animate the strokes -->
+      <svg class="cp-logo transition-transform group-hover:scale-110" viewBox="62 74 330 364" width="26" height="28" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="cp-nav-g" gradientUnits="userSpaceOnUse" x1="120" y1="400" x2="380" y2="110"><stop offset="0" stop-color="#5B9BF8"/><stop offset="1" stop-color="#6DD9A8"/></linearGradient>
+        </defs>
+        <path class="cp-arc" d="M 334 154 A 136 136 0 1 0 334 358" pathLength="1" fill="none" stroke="url(#cp-nav-g)" stroke-width="56" stroke-linecap="round"/>
+        <g class="cp-dot"><circle cx="334" cy="358" r="40" fill="#5B9BF8"/><circle cx="334" cy="358" r="16" fill="#0D1F3C"/></g>
+        <polyline class="cp-chevron" points="292,206 352,256 292,306" pathLength="1" fill="none" stroke="#6DD9A8" stroke-width="44" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
       <span class="font-display text-lg text-white">ClearPath</span>
     </a>
 
@@ -39,6 +47,10 @@ const current = Astro.url.pathname;
 
     <!-- CTA -->
     <div class="flex items-center gap-3">
+      <button type="button" class="motion-toggle" data-motion-toggle aria-pressed="false" aria-label="Reduce motion" title="Pause animations">
+        <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1.2"/><rect x="14" y="5" width="4" height="14" rx="1.2"/></svg>
+        <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.6v12.8a1 1 0 0 0 1.53.85l10.1-6.4a1 1 0 0 0 0-1.7l-10.1-6.4A1 1 0 0 0 8 5.6Z"/></svg>
+      </button>
       <a
         href="https://github.com/clearpath-ext/clearpath-extension"
         class="hidden md:flex items-center gap-2 text-sm text-white/75 hover:text-white transition-colors"
