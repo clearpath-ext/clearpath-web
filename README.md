@@ -9,9 +9,9 @@ Built with Astro + Tailwind CSS, deployed on Cloudflare Pages.
 ## Stack
 
 - **Hosting:** Cloudflare Pages
-- **Framework:** Astro 4 (hybrid — static + serverless API routes)
-- **Styling:** Tailwind CSS
-- **Email:** Resend (inbound forwarding + sending)
+- **Framework:** Astro 5 with `@astrojs/cloudflare` 12 (static pages; `/api/notify` runs on demand). Stay on adapter 12: v13+ drops Cloudflare Pages support.
+- **Styling:** Tailwind CSS 3
+- **Email:** Resend sends the notify-me alerts; mail to hello@clearpathext.com is Google Workspace (see below)
 
 ---
 
@@ -93,18 +93,29 @@ The work for each version is tracked as issues in the extension repo's [mileston
 ```
 src/
 ├── pages/
-│   ├── index.astro           # Homepage
-│   ├── install.astro         # Install page
+│   ├── index.astro           # Homepage (scroll demo, read-aloud demo, FAQ)
+│   ├── install.astro         # Download, load-unpacked steps, notify-me form
+│   ├── roadmap.astro         # Shipped releases and what's next (linked to milestones)
+│   ├── brand.astro           # Brand guide
 │   ├── privacy.astro         # Privacy policy
+│   ├── 404.astro
 │   ├── api/
-│   │   └── notify.ts         # Launch notify-me form
-│   └── docs/
-│       └── getting-started.astro
+│   │   └── notify.ts         # Notify-me form → Resend
+│   └── docs/                 # getting-started, api-setup, profiles, symbols, vocabulary
 ├── components/
-│   ├── Nav.astro
-│   └── Footer.astro
+│   ├── Nav.astro             # Docs · Roadmap · Install, pause-animations toggle
+│   ├── Footer.astro
+│   ├── DeclutterDemo.astro   # Homepage "clear up" scroll demo
+│   └── Icon.astro            # Lucide line icons
 ├── layouts/
-│   └── Base.astro
+│   └── Base.astro            # Head, CSP-safe scripts, JSON-LD
+├── middleware.ts             # Blocks the /_image endpoint
 └── styles/
     └── global.css
+public/
+├── js/                       # Page scripts (CSP: script-src 'self'): logo-draw, motion-pref
+├── css/motion.css            # Pause-animations styles
+├── _headers                  # Security headers and CSP
+├── llms.txt, sitemap.xml, robots.txt
+└── video/, symbols/, screenshots/, brand-assets/
 ```
