@@ -6,7 +6,7 @@ import Footer from '../components/Footer.astro';
 
 <Base
   title="Install"
-  description="Install ClearPath for Chrome or Firefox in seconds. Free, no account required."
+  description="Download ClearPath for Chrome, Edge, Brave, Arc and Opera. Free, no account required."
 >
   <Nav />
 
@@ -100,16 +100,19 @@ import Footer from '../components/Footer.astro';
               <p class="text-white/75 text-sm">Also works on Edge, Brave, Arc, Opera</p>
             </div>
           </div>
+          <!-- releases/latest/download/clearpath-chrome.zip always serves the newest
+               release (the release workflow attaches an unversioned copy) -->
           <a
-            href="https://github.com/clearpath-ext/clearpath-extension#from-source"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-semibold text-navy-900 bg-brand-gradient hover:opacity-90 transition-opacity mt-auto"
+            href="https://github.com/clearpath-ext/clearpath-extension/releases/latest/download/clearpath-chrome.zip"
+            class="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-semibold text-navy-900 bg-brand-gradient hover:opacity-90 transition-opacity mt-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 focus-visible:ring-offset-navy-800"
           >
-            Chrome Web Store — Coming Soon
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+            Download for Chrome (.zip)
           </a>
-          <p class="text-white/75 text-xs text-center mt-3">
-            Not live yet — <span class="underline decoration-white/20">the link above builds it from source</span> in the meantime.
+          <p class="text-white/75 text-xs text-center mt-3 md:min-h-12">
+            Takes a minute: <a href="#install-download" class="text-brand-blue hover:text-brand-green transition-colors">see the steps below</a>.
+            <a href="https://github.com/clearpath-ext/clearpath-extension/releases/latest" target="_blank" rel="noopener noreferrer" class="text-brand-blue hover:text-brand-green transition-colors">Release notes</a>.
+            The Chrome Web Store listing is coming soon.
           </p>
         </div>
 
@@ -125,23 +128,45 @@ import Footer from '../components/Footer.astro';
             </div>
           </div>
           <a
-            href="https://github.com/clearpath-ext/clearpath-extension#from-source"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-semibold text-navy-900 bg-brand-gradient hover:opacity-90 transition-opacity mt-auto"
+            href="#notify-heading"
+            class="flex items-center justify-center gap-2 w-full py-3 rounded-xl font-semibold text-white border border-white/15 hover:border-white/30 transition-colors mt-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
           >
             Firefox Add-ons — Coming Soon
           </a>
-          <p class="text-white/75 text-xs text-center mt-3">
-            Not live yet — <span class="underline decoration-white/20">the link above builds it from source</span> in the meantime.
+          <p class="text-white/75 text-xs text-center mt-3 md:min-h-12">
+            Not ready yet. Leave your email below to hear when it is.
           </p>
         </div>
 
       </div>
 
+      <!-- Installing the download -->
+      <section id="install-download" class="mb-16 -mt-6 scroll-mt-28" aria-labelledby="install-download-heading">
+        <h2 id="install-download-heading" class="font-display text-2xl text-white mb-2">Installing the download</h2>
+        <p class="text-white/75 text-sm mb-6">Until the Chrome Web Store listing is live, ClearPath installs from the zip. It works the same way in Edge, Brave, Arc and Opera.</p>
+        <ol class="space-y-5">
+          {[
+            { title: 'Unzip it', body: 'Open the downloaded clearpath-chrome.zip so you have a folder. Keep that folder somewhere it won\'t be deleted, like Documents: the browser runs ClearPath from it.' },
+            { title: 'Turn on Developer mode', body: 'Type chrome://extensions in the address bar (edge://extensions in Edge) and switch on Developer mode in the top-right corner.' },
+            { title: 'Load it', body: 'Click Load unpacked and choose the unzipped folder. ClearPath appears in your extensions; pin it so it\'s one click away.' },
+          ].map(({ title, body }, i) => (
+            <li class="flex gap-5">
+              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-brand-gradient flex items-center justify-center text-navy-900 font-bold text-sm" aria-hidden="true">{i + 1}</div>
+              <div>
+                <h3 class="font-semibold text-white mb-1"><span class="sr-only">Step {i + 1}: </span>{title}</h3>
+                <p class="text-white/75 text-sm leading-relaxed">{body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+        <p class="text-white/75 text-sm mt-6">
+          <strong class="text-white font-semibold">Updating:</strong> a downloaded copy doesn't update itself. When a new version is out, download the zip again, replace the folder's contents, and click the reload arrow on ClearPath's card in your extensions page. Your settings stay. The store version, once it's live, will update automatically.
+        </p>
+      </section>
+
       <!-- Notify me -->
-      <div class="p-6 rounded-2xl bg-navy-800/40 border border-white/5 mb-16 -mt-8">
-        <h2 class="font-semibold text-white mb-1">Get notified at launch</h2>
+      <div class="p-6 rounded-2xl bg-navy-800/40 border border-white/5 mb-16 scroll-mt-28">
+        <h2 id="notify-heading" class="font-semibold text-white mb-1">Get notified at launch</h2>
         <p class="text-white/75 text-sm mb-4">
           ClearPath is launching on Chrome first, with full Firefox support to follow. Leave your email and we'll let you know the moment either store listing goes live — nothing else, ever.
         </p>
@@ -223,7 +248,7 @@ import Footer from '../components/Footer.astro';
             {
               step: '1',
               title: 'Pin the extension',
-              body: 'In Chrome: click the puzzle piece icon in the toolbar, find ClearPath, and click the pin icon. In Firefox: click the Extensions button, then the gear icon next to ClearPath and choose "Pin to Toolbar." Both put the ClearPath icon in your toolbar for quick access.',
+              body: 'Click the puzzle piece icon in the toolbar, find ClearPath, and click the pin icon. That puts the ClearPath icon in your toolbar for quick access.',
             },
             {
               step: '2',

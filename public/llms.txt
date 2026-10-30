@@ -7,7 +7,7 @@ ClearPath is built for AAC users, people with dyslexia, and anyone who needs web
 ## Key facts
 
 - Price: free, no account required, no data collected
-- Platforms: Chrome and Chromium browsers (Edge, Brave, Arc, Opera); Manifest V3. Not in the Chrome Web Store yet, so it currently installs from source. Firefox support is planned after Chrome.
+- Platforms: Chrome and Chromium browsers (Edge, Brave, Arc, Opera); Manifest V3. Not in the Chrome Web Store yet: download the latest release (https://github.com/clearpath-ext/clearpath-extension/releases/latest/download/clearpath-chrome.zip) and load it unpacked (steps: https://clearpathext.com/install/#install-download). Firefox support is planned after Chrome.
 - License: open source, MIT
 - Privacy: no servers, no analytics. Reading Mode, Focus Tools, Symbol Overlay, and Vocabulary work offline, and Read Aloud does with the computer's built-in voices. Simplify requires your own LLM API key (OpenAI, Anthropic, or a local Ollama instance); the key stays on the device where it was entered and is never synced or exported.
 
