@@ -59,7 +59,7 @@ npx wrangler pages secret put FORWARD_TO_EMAIL
 | Variable | Description |
 |---|---|
 | `RESEND_API_KEY` | Your Resend API key (sends the notify-me emails) |
-| `FORWARD_TO_EMAIL` | Your personal inbox for notify-me signups |
+| `FORWARD_TO_EMAIL` | Where notify-me signups go (`hello@clearpathext.com`) |
 
 Copy `.env.example` to `.env` for local development.
 
@@ -67,10 +67,10 @@ Copy `.env.example` to `.env` for local development.
 
 ## Email (hello@clearpathext.com)
 
-Incoming mail doesn't touch this site. Cloudflare Email Routing (the MX records on
-clearpathext.com) hands each message to the `clearpath-email` Worker, which forwards
-it to your inbox through Resend with Reply-To set to the sender. Outgoing mail from
-`hello@clearpathext.com` is sent through Resend.
+Mail for clearpathext.com is Google Workspace: the MX, SPF and `google._domainkey`
+DKIM records point at Google, and `hello@` is an alias on the ClearPath Workspace
+user. The site's own emails still go out through Resend, which has its records on
+`send.clearpathext.com` and `resend._domainkey`; don't remove those.
 
 This site only sends one kind of email: `/api/notify` forwards "notify me when
 ClearPath launches" signups to `FORWARD_TO_EMAIL`.
