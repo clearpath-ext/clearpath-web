@@ -1,0 +1,119 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const REPO = 'https://github.com/clearpath-ext/clearpath-extension';
+
+// Shipped releases, newest first. Details live in each release's notes.
+const shipped = [
+  { version: 'v0.7.0', name: 'Polish', summary: 'An accessibility pass: keyboard support, screen reader announcements, WCAG AA contrast, and fewer permissions.' },
+  { version: 'v0.6.0', name: 'Vocabulary', summary: 'Double-click any word for a plain-English definition, fully offline.' },
+  { version: 'v0.5.0', name: 'Profiles & Symbol Overlay', summary: 'AAC pictograms above key words, and settings you can save and share.' },
+  { version: 'v0.4.0', name: 'Focus Tools', summary: 'Reading ruler, paragraph focus, and word complexity hints.' },
+  { version: 'v0.3.0', name: 'Reading Mode', summary: 'A clutter-free view with dyslexia-friendly fonts and four color themes.' },
+  { version: 'v0.2.0', name: 'Simplify', summary: 'Plain-language rewriting with your own LLM key.' },
+  { version: 'v0.1.0', name: 'Read Aloud', summary: 'Text to speech with word-by-word highlighting.' },
+];
+
+// Milestone numbers on GitHub: v0.8.0 = 1, v0.9.0 = 2, v1.0.0 = 3
+const planned = [
+  {
+    version: 'v0.8.0',
+    name: 'Onboarding',
+    milestone: 1,
+    items: [
+      'A welcome screen on first install that introduces each tool',
+      'Starter profiles for dyslexia, AAC, and low vision',
+      'A built-in practice page to try every tool',
+      'A notice in the popup when a new version is out',
+      'Keyboard shortcuts for the main tools',
+    ],
+  },
+  {
+    version: 'v0.9.0',
+    name: 'Polish and a security audit',
+    milestone: 2,
+    items: [
+      'A full security review of the extension',
+      'Automated tests in a real browser, and a screen reader pass with VoiceOver',
+      'Everything the Chrome Web Store listing needs',
+      'Small additions: a Summarize button, an Ollama model picker, and custom OpenAI endpoints',
+    ],
+  },
+  {
+    version: 'v1.0.0',
+    name: 'Chrome Web Store',
+    milestone: 3,
+    items: ['ClearPath on the Chrome Web Store, with automatic updates'],
+  },
+];
+---
+
+<Base
+  title="Roadmap"
+  description="What's shipped in ClearPath and what's next: onboarding in v0.8, a security audit in v0.9, and the Chrome Web Store in v1.0."
+>
+  <Nav />
+
+  <main id="main-content" class="pt-32 pb-24">
+    <div class="max-w-3xl mx-auto px-6">
+
+      <div class="text-center mb-16">
+        <h1 class="font-display text-5xl text-white mb-4">Roadmap</h1>
+        <p class="text-white/75 text-lg">What's next for ClearPath, and what's already out.</p>
+      </div>
+
+      <section aria-labelledby="next-heading" class="mb-16">
+        <h2 id="next-heading" class="font-display text-3xl text-white mb-6">Coming next</h2>
+        <ol class="space-y-5">
+          {planned.map(({ version, name, milestone, items }) => (
+            <li class="relative p-6 pl-7 rounded-2xl bg-navy-800/40 border border-white/5 overflow-hidden">
+              <span class="absolute left-0 top-0 bottom-0 w-1 bg-brand-gradient" aria-hidden="true"></span>
+              <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 mb-3">
+                <h3 class="text-white font-semibold text-lg">
+                  <span class="font-mono text-brand-blue text-base mr-2">{version}</span>{name}
+                </h3>
+                <a href={`${REPO}/milestone/${milestone}`} target="_blank" rel="noopener noreferrer" class="text-sm text-brand-blue hover:text-brand-green transition-colors">
+                  Track it on GitHub<span class="sr-only"> ({version} milestone)</span> →
+                </a>
+              </div>
+              <ul class="space-y-1.5 text-white/75 text-sm list-disc pl-5 marker:text-brand-green">
+                {items.map((item) => <li>{item}</li>)}
+              </ul>
+            </li>
+          ))}
+        </ol>
+        <p class="text-white/75 text-sm mt-6">
+          After v1.0: Firefox support and the Firefox Add-ons listing.
+          Want to help? Issues marked <a href={`${REPO}/labels/good%20first%20issue`} target="_blank" rel="noopener noreferrer" class="text-brand-blue hover:text-brand-green transition-colors">good first issue</a> are a good place to start.
+        </p>
+      </section>
+
+      <section aria-labelledby="shipped-heading">
+        <h2 id="shipped-heading" class="font-display text-3xl text-white mb-6">Shipped</h2>
+        <ol class="space-y-3">
+          {shipped.map(({ version, name, summary }) => (
+            <li class="flex gap-4 p-4 rounded-xl bg-navy-800/30 border border-white/5">
+              <svg class="flex-shrink-0 mt-0.5" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6DD9A8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              <div class="min-w-0">
+                <h3 class="text-white font-semibold">
+                  <a href={`${REPO}/releases/tag/${version}`} target="_blank" rel="noopener noreferrer" class="hover:text-brand-blue transition-colors">
+                    <span class="font-mono text-white/75 text-sm mr-2">{version}</span>{name}
+                  </a>
+                </h3>
+                <p class="text-white/75 text-sm">{summary}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+        <p class="text-white/75 text-sm mt-6">
+          Full details are in the <a href={`${REPO}/releases`} target="_blank" rel="noopener noreferrer" class="text-brand-blue hover:text-brand-green transition-colors">release notes</a>.
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <Footer />
+</Base>

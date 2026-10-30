@@ -77,6 +77,17 @@ ClearPath launches" signups to `FORWARD_TO_EMAIL`.
 
 ---
 
+## Roadmap
+
+[clearpathext.com/roadmap](https://clearpathext.com/roadmap/) (`src/pages/roadmap.astro`) lists what's shipped and what's planned:
+
+- **v0.8.0:** onboarding.
+- **v0.9.0:** polish and a security audit.
+- **v1.0.0:** the Chrome Web Store listing.
+- **After v1.0:** Firefox.
+
+The work for each version is tracked as issues in the extension repo's [milestones](https://github.com/clearpath-ext/clearpath-extension/milestones). When a release ships or the plan changes, update `roadmap.astro`, the roadmap in the [org profile](https://github.com/clearpath-ext/.github/blob/main/profile/README.md), and the extension README together.
+
 ## Project Structure
 
 ```
